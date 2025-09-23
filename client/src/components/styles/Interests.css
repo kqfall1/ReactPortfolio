@@ -1,0 +1,12 @@
+.interests {
+    color: #9F8FA3;
+    font-size: 1.25em;
+    font: 20px Georgia, serif; 
+    text-align: center;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.5em; 
+    max-width: 90%; 
+    margin: 0 auto; 
+}

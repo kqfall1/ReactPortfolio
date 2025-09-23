@@ -1,0 +1,11 @@
+.footer { 
+    color: #e4e6eb;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    font: 14px Georgia, serif; 
+}
+
+.footer p { 
+    margin: 0.75em 0;
+}

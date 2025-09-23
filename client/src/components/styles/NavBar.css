@@ -1,0 +1,36 @@
+.navbar { 
+    width: 100%;
+    font: 20px Georgia, serif; 
+    text-align: center;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em; 
+}
+
+.navbar .title a {
+    color: #e4e6eb; 
+    text-decoration: none;
+}
+
+.navbar .portfolioInfo {
+    color: #e4e6eb; 
+}
+
+.navbar .navLinks {
+    margin: 0 2em 0 0;
+}
+
+.navbar .navLinks a {
+    padding: 0 1em;
+    color: #4fc3f7; 
+}
+
+.navbar .navLinks a:hover { 
+    color: #3f99c2; 
+    cursor: pointer; 
+}
+
+.navbar .portfolioInfo h4 {
+    margin: 0.5em 0em 0.5em 0;
+}

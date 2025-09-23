@@ -1,0 +1,25 @@
+.skills { 
+    color: #e4e6eb;
+    font-size: 1.25em;
+    font: 20px Georgia, serif; 
+    text-align: center;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills #skillsHeading { 
+    margin: 0 0; 
+}
+
+.skills #skillList { 
+    color: #9F8FA3; 
+    max-width: 85%; 
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 0.25em 0; 
+}
+
+.skills #skillList li { 
+    margin: 0.75em 0; 
+}
