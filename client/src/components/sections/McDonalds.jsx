@@ -6,7 +6,7 @@ export default function McDonalds () {
             <h2>McDonald's</h2>
             <p>Crew Member | May 2018 - February 2021</p>
             <p id="mcdonaldsDescription">
-                Provided many forms of labour to the former busiest McDonald’s location in Canada. This included
+                Provided many forms of labour to the former-busiest McDonald’s location in Canada. This included
                 preparing food, running the front counter, delivering food for both walk-in customers and 
                 drive-through customers, taking drive-through orders, washing equipment, cleaning the lobby, 
                 helping to unload store delivery trucks, and handling delivered merchandise.

@@ -6,15 +6,18 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 1em; 
+    margin-top: 1em; 
 }
 
-.navbar .title a {
-    color: #e4e6eb; 
-    text-decoration: none;
+.navbar img { 
+    width: 6em; 
+    height: 4em; 
+    margin-left: 1em; 
 }
 
 .navbar .portfolioInfo {
     color: #e4e6eb; 
+    margin-left: 1em;
 }
 
 .navbar .navLinks {

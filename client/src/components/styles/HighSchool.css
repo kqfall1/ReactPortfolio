@@ -30,7 +30,7 @@
 }
 
 .highSchool .highSchoolContent .highSchoolDescription p { 
-    margin: 0 0; 
+    margin: 0.5em 0; 
 }
 
 .highSchool #highSchoolDescriptionIntro, .highSchool #highSchoolDescriptionDetails { 
@@ -44,6 +44,6 @@
 }
 
 .highSchool .highSchoolContent figure img { 
-    width: 100%; 
-    height: 100%; 
+    width: 27.5em; 
+    height: 20em;  
 }
