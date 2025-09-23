@@ -1,4 +1,4 @@
-.education { 
+.mcdonalds { 
     color: #e4e6eb;
     font-size: 1.25em;
     font: 20px Georgia, serif; 
@@ -8,15 +8,12 @@
     align-items: center;
 }
 
-.education h1 { 
-    margin: 0.25em 0 0 0; 
+.mcdonalds h2 { 
+    margin: 0.25em 0 0 0;
 }
 
-.education a { 
-    color: #4fc3f7;
-}
-
-.education a:hover { 
-    color: #3f99c2; 
-    cursor: pointer; 
+.mcdonalds #mcdonaldsDescription { 
+    color: #9F8FA3;
+    max-width: 90%;
+    margin-bottom: 1em; 
 }

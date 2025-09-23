@@ -8,12 +8,33 @@
     align-items: center;
 }
 
-.college h2, .college p { 
+.college .headerTags h2 { 
+    margin: 0.25em 0 0 0; 
+}
+
+.college .headerTags p { 
     margin: 0.5em 0 0 0; 
 }
 
-.college #collegeDescription { 
-    max-width: 90%;
-    margin: 1em 0 0.5em 0; 
+.college .collegeContent { 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+    max-width: 90%; 
+    margin: 1em 0 1em 0;
+}
+
+.college .collegeContent .collegeDescription { 
+    margin-left: 1em; 
+    text-align: center; 
     color: #9F8FA3;
+}
+
+.college .collegeContent .collegeDescription p { 
+    margin: 0 0; 
+}
+
+.college .collegeContent .collegeDescription #collegePhotoSrcPreamble { 
+    color: #e4e6eb; 
 }

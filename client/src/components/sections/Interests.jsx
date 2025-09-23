@@ -10,7 +10,7 @@ export default function Interests () {
                 always looked foward to. However, I put off pursuing it as a career for far too long. I'm glad
                 that I'm finally living the life that I was meant to live.</p> 
 
-            <p>
+            <p id="finalParagraph">
                 When I'm not coding or studying, I may be working out. I try to stay active and healthy, 
                 especially with the sedentary lifestyle that comes with programming. I try to read books 
                 regularly, though I go through phases where I read a lot and then not at all. I used to play 

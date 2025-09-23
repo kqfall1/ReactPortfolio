@@ -17,9 +17,14 @@
     max-width: 85%; 
     list-style-type: none;
     padding: 0;
-    margin: 0 0 0.25em 0; 
+    margin: 0 0; 
 }
 
 .skills #skillList li { 
     margin: 0.75em 0; 
+}
+
+.skills .skillNames { 
+    font-weight: bold;
+    display: inline; 
 }

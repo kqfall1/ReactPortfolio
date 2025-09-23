@@ -1,12 +1,15 @@
 import '../styles/WorkExperience.css';
+import Costco from './Costco.jsx'; 
+import McDonalds from './McDonalds.jsx'; 
 
 export default function WorkExperience() { 
     return (
-        <div className="workExperience">
-            <h1 id="workExperienceHeading">Work Experience</h1>
-            <ul className="workExperienceList">
-                <li></li>
-            </ul>
-        </div>
+        <>  
+            <div className="workExperience">
+                <h1>Work Experience</h1>
+                <Costco />
+                <McDonalds />
+            </div>
+        </>
     );
 }
