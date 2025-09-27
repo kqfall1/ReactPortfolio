@@ -3,9 +3,6 @@
     font-size: 1.25em;
     font: 20px Georgia, serif; 
     text-align: center;
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
 }
 
 .college .headerTags h2 { 
@@ -22,7 +19,7 @@
     align-items: center;
     justify-content: space-between;
     max-width: 90%; 
-    margin: 1em 0 1em 0;
+    margin: 1em auto 1em auto;
 }
 
 .college .collegeContent .collegeDescription { 

@@ -1,0 +1,9 @@
+.projects { 
+    color: #e4e6eb; 
+    font: 20px Georgia, serif; 
+    text-align: center;
+}
+
+.projects h1 { 
+    margin: 0.5em 0 0 0;
+}
