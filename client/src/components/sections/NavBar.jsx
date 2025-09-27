@@ -1,4 +1,5 @@
 import '../styles/NavBar.css';
+
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/Logo.png'; 
 import { Outlet } from 'react-router-dom';

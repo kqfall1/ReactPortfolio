@@ -4,20 +4,17 @@ import RH_KingAcademy from '../../assets/RH_KingAcademy.jpg';
 export default function HighSchool() {
     return ( 
         <div className="highSchool">
-            <div className="headerTags">
-                <h2>High School Diploma</h2>
-                <p>R.H. King Academy, Scarborough, ON</p>
-                <p>September 2016 - June 2020</p>
-            </div>    
-            <div className="highSchoolContent">
+            <h2 className="sectionH2">High School Diploma</h2>
+            <p className="sectionP">R.H. King Academy, Scarborough, ON</p>
+            <p className="sectionP">September 2016 - June 2020</p>
+            <div className="horizontalSectionSidebar">
                 <div className="highSchoolDescription">
-                    <p id="highSchoolDescriptionIntro">
+                    <p>
                         I am glad that I had the opportunity to attend R.H. King Academy as a secondary student. 
                         It is an academic-oriented school that emphasizes the importance of community service and
                         leadership. The mathematics, science, and computer technology courses available when I 
-                        was enrolled there were difficult but very helpful in preparing me for college. 
-                    </p>
-                    <p id="highSchoolDescriptionDetails">
+                        was enrolled there were difficult but very helpful in preparing me for college.<br/><br/>
+                        
                         I most fondly remember some good times I had in some of the programming and computer 
                         networking courses offered at R.H. King. I miss my Cisco Networking professor, Mr. Raptou. 
                         Shoutout to him for inspiring me to study and pass a Cisco certification test, which I did 
@@ -29,7 +26,7 @@ export default function HighSchool() {
                         while I was there.    
                     </p>
                 </div>
-                <figure> 
+                <figure className="horizontalSectionSidebarRightElement"> 
                     <img src ={RH_KingAcademy}/>
                     <figcaption>
                         Ahmed, J. (2024). King’s calendar change causes distress among students. Kingsley Voice. <a href="https://kingsleyvoice.com/9388/king-life/kings-calendar-change-causes-distress-among-students/">

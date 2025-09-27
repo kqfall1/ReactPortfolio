@@ -2,35 +2,7 @@
     margin-bottom: 1.5em; 
 }
 
-.healthHome h2 { 
-    margin: 0.25em 0 0 0;
-}
-
-.healthHome a { 
-    color: #4fc3f7; 
-}
-
-.healthHome a:hover { 
-    color: #3f99c2; 
-    cursor: pointer;
-}
-
-.healthHome .healthHomeContent { 
-    display: flex; 
-    flex-direction: row; 
-    align-items: center;
-    justify-content: space-between;
-    max-width: 90%; 
-    margin: 1em auto; 
-}
-
-.healthHome .healthHomeContent img { 
+.healthHome img { 
     width: 27.5em; 
     height: 20em; 
-}
-
-.healthHome .healthHomeContent #healthHomeDescription { 
-    margin-left: 1em; 
-    text-align: center; 
-    color: #9F8FA3;
 }

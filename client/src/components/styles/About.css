@@ -1,38 +1,9 @@
 .about { 
-    color: #e4e6eb; 
     font: 20px Georgia, serif; 
-    text-align: center;
+    margin-bottom: 1.5em;  
 }
 
-.about .aboutMainContent { 
-    font-size: 1.25em;
-    display: flex; 
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto; 
-    max-width: 90%; 
-}
-
-.about .aboutMainContent .interests { 
-    max-width: 60%; 
-}
-
-.about .aboutMainContent img { 
-    width: 40%; 
-    height: 85vh; 
-    margin-left: 1.5em; 
-}
-
-.about #resumeLink { 
-    margin-bottom: 1.5em; 
-}
-
-.about #resumeLink a { 
-    color: #4fc3f7;   
-}
-
-.about #resumeLink a:hover { 
-    color: #3f99c2; 
-    cursor: pointer; 
+#headshot { 
+    width: 20em; 
+    height: 25em; 
 }

@@ -1,8 +1,5 @@
 import MainRouter from './MainRouter.jsx';
-import '../styles/App.css'; 
 
-function App() {
+export default function App() {
   return (<MainRouter />); 
 }
-
-export default App

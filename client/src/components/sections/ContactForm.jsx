@@ -1,7 +1,8 @@
 import '../styles/ContactForm.css'; 
+
 import { useNavigate } from 'react-router-dom'; 
 
-export default function () { 
+export default function ContactForm() { 
     const navigate = useNavigate(); 
         
     const handleContactFormSubmission = (e) => { 
@@ -10,7 +11,7 @@ export default function () {
     }
     
     return ( 
-        <form id="contactForm" onSubmit={handleContactFormSubmission}> 
+        <form className="contactForm" onSubmit={handleContactFormSubmission}> 
             <label for="firstNameInput">First name: </label>
             <input id="firstNameInput" type="text" placeholder="John" />
             <label for="lastNameInput">Last name: </label>  

@@ -3,6 +3,7 @@
     font: 20px Georgia, serif; 
     text-align: center;
     display: flex; 
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0 1em; 
@@ -20,6 +21,10 @@
     margin-left: 1em;
 }
 
+.navbar .portfolioInfo h4 {
+    margin: 0.5em 0;
+}
+
 .navbar .navLinks {
     margin: 0 2em 0 0;
 }
@@ -27,13 +32,4 @@
 .navbar .navLinks a {
     padding: 0 1em;
     color: #4fc3f7; 
-}
-
-.navbar .navLinks a:hover { 
-    color: #3f99c2; 
-    cursor: pointer; 
-}
-
-.navbar .portfolioInfo h4 {
-    margin: 0.5em 0em 0.5em 0;
 }
