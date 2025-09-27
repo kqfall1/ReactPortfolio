@@ -1,4 +1,4 @@
-import '../styles/Education.css'
+import '../../styles/Education.css'
 
 import College from '../sections/College';
 import Footer from '../sections/Footer'; 

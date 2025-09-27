@@ -1,5 +1,3 @@
-import '../styles/Contact.css'; 
-
 import ContactForm from '../sections/ContactForm.jsx'; 
 import Footer from '../sections/Footer.jsx'; 
 

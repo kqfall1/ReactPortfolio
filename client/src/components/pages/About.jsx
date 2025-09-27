@@ -1,4 +1,4 @@
-import '../styles/About.css';
+import '../../styles/About.css';
 
 import Footer from '../sections/Footer.jsx'; 
 import Headshot from '../../assets/Headshot.jpg';

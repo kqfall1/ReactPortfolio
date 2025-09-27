@@ -1,19 +1,21 @@
 .navbar { 
-    width: 100%;
-    font: 20px Georgia, serif; 
+    width: 100v;
+    font: 20px Georgia, Arial, Verdana; 
     text-align: center;
+    flex: 0 0 auto; 
     display: flex; 
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0 1em; 
     margin-top: 1em; 
+    font: 15pt Verdana, Arial; 
 }
 
 .navbar img { 
     width: 6em; 
     height: 4em; 
-    margin-left: 1em; 
+    margin-left: 2em; 
 }
 
 .navbar .portfolioInfo {
@@ -31,5 +33,4 @@
 
 .navbar .navLinks a {
     padding: 0 1em;
-    color: #4fc3f7; 
 }

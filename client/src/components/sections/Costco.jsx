@@ -1,5 +1,3 @@
-import '../styles/Costco.css'; 
-
 export default function Costco() { 
     return ( 
         <div className="costco"> 

@@ -14,7 +14,8 @@ export default function College () {
                     in object-oriented programming and web development. I also learned lots about the theory
                     behind software engineering (the software development life cycle), English, mathematics, 
                     and even psychology! I'm so grateful to be fortunate enough to pursue my passion for 
-                    technology.<br/><br/><div id="collegePhotoSrcPreamble">Campus Services. Centennial 
+                    software. However, I want to make sure I do it the right way and don't cut corners!
+                    <br/><br/><div id="collegePhotoSrcPreamble">Campus Services. Centennial 
                     College.</div> <a href="https://www.centennialcollege.ca/student-life/campus-services/">
                     https://www.centennialcollege.ca/student-life/campus-services/</a>
                 </p>

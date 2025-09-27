@@ -6,18 +6,30 @@ a:hover {
   cursor: pointer; 
 }
 
+body { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100wh; 
+  min-height: 100vh;
+  margin: 0 0;
+  background-color: #0f1117;
+  color: #e4e6eb;
+  text-align: center; 
+  font: 16pt Georgia; 
+}
+
+button { 
+  font: 16pt Arial, Verdana;
+}
+
 .h1Margins { 
   margin-bottom: 0; 
 }
 
-html { 
-  background-color: #0f1117;  
-  color: #e4e6eb; 
-  text-align: center;
-}
-
 hr { 
   border: 1px solid #e4e6eb; 
+  width: 100vw; 
 }
 
 .horizontalSectionSidebar { /* Used by and for section components */ 
@@ -27,6 +39,11 @@ hr {
   justify-content: space-between;
   max-width: 90%; 
   margin: 1em auto; 
+}
+
+.horizontalSectionSidebar img, .horizontalSectionSidebar figure img { 
+  width: 27.5em; 
+  height: 20em; 
 }
 
 .horizontalSectionSidebarRightElement { 
@@ -46,7 +63,7 @@ hr {
 }
 
 .sectionP { 
-  margin-top: 0.5em; 
+  margin-top: 0.25em; 
   margin-bottom: 0; 
 }
 

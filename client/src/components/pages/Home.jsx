@@ -1,5 +1,3 @@
-import '../styles/Home.css'; 
-
 import Footer from '../sections/Footer.jsx';
 import Introduction from '../sections/Introduction.jsx';
 import Skills from '../sections/Skills.jsx';
