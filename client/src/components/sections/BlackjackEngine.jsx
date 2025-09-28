@@ -1,6 +1,6 @@
 import '../../styles/BlackjackEngine.css';
 
-import BlackjackEnginePrototype from '../../assets/BlackjackEnginePrototype.jpg'; 
+import BlackjackEnginePrototype from '../../assets/BlackjackEnginePrototype.JPG'; 
 
 export default function BlackjackEngine() { 
     return ( 
