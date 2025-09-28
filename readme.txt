@@ -10,7 +10,7 @@ has less options with dark mode; colors more easily distract and overwhelm. I am
 and the background do the heavy lifting is often the best option. 
 
 I also wasted time in this project duplicating CSS logic in nearly every component I created only to abstract 
-most of them into a global CSS rule located in index.css. DRY really is the golden rule of software! Of course, 
+most of them into a global CSS rule located in index.css. DRY really is the golden rule of software. Of course, 
 I should have figured out the most optimal way of styling my website beforehand. You live and learn! 
 
  - Quinn Keenan 
