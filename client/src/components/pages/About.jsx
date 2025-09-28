@@ -16,8 +16,9 @@ export default function About () {
                     className="horizontalSectionSidebarRightElement" id="headshot"/>
                 </div>     
                 <p>
-                    Here is a <a href={Resume}>PDF version of my resume!</a> Feel free to contact me any day 
-                    or night if you are interested in what I have to offer! 
+                    Here is a <a href={Resume} target="_blank">PDF version of my resume!</a> Feel 
+                    free to contact me any day or night if you are interested in what I have to 
+                    offer! 
                 </p>
             </div>
             <Footer/>
