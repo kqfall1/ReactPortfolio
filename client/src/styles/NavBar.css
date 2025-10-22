@@ -1,0 +1,36 @@
+.navbar { 
+    width: 100v;
+    font: 20px Georgia, Arial, Verdana; 
+    text-align: center;
+    flex: 0 0 auto; 
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em; 
+    margin-top: 1em; 
+    font: 15pt Verdana, Arial; 
+}
+
+.navbar img { 
+    width: 6em; 
+    height: 4em; 
+    margin-left: 2em; 
+}
+
+.navbar .portfolioInfo {
+    color: #e4e6eb; 
+    margin-left: 1em;
+}
+
+.navbar .portfolioInfo h4 {
+    margin: 0.5em 0;
+}
+
+.navbar .navLinks {
+    margin: 0 2em 0 0;
+}
+
+.navbar .navLinks a {
+    padding: 0 1em;
+}

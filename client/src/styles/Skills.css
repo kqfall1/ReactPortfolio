@@ -1,0 +1,15 @@
+.skillList { 
+    max-width: 85%; 
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto; 
+}
+
+.skillList li { 
+    margin: 0.75em 0; 
+}
+
+.skillList .skillNames { 
+    font-weight: bold;
+    display: inline; 
+}
