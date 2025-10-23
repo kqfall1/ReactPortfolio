@@ -22,7 +22,7 @@ const create = async (req, res) => {
 
     try {
         await contact.save();
-        return res.status(201).json({message: "Successfully contacted the administrator!"}); 
+        return res.status(201).json({message: "Successfully contacted administrators!"}); 
     } 
     catch (err) {
         return res.status(400).json({error: errorHandler(err)})
@@ -56,10 +56,22 @@ const remove = async (req, res) => {
     }
 }
 
-const removeAll = async (req, res) => {
+const removeMany = async (req, res) => {
+    const ids = req.body.ids;
+    let msgStr = ''; 
+    
     try {
-        await contactModel.deleteMany({}); 
-        res.status(200).json({message: "All contacts have been deleted."});
+        if (!ids) {
+            await contactModel.deleteMany({});
+            msgStr = "All contacts have been deleted.";
+            return res.status(200).json({message: "All contacts have been deleted."});
+        }
+        else {
+            await contactModel.deleteMany({_id: { $in: ids }});
+            msgStr = "Specified contacts have been deleted.";
+        }
+        
+        res.status(200).json({message: msgStr});
     }
     catch (err) {
         return res.status(400).json({error: errorHandler(err)});
@@ -78,4 +90,4 @@ const update = async (req, res) => {
     }
 }
 
-export default { contactByID, create, list, read, remove, removeAll, update }
+export default { contactByID, create, list, read, remove, removeMany, update }

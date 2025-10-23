@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <>
             <div className="home">
-                <h1 className="h1Margins">Aspiring Software Engineer</h1>
+                <h1 className="h1Margins">Software Engineer</h1>
                 <Introduction/>
                 <Skills/>
                 <WorkExperience/>
