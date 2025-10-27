@@ -56,10 +56,22 @@ const remove = async (req, res) => {
     }
 }
 
-const removeAll = async (req, res) => {
+const removeMany = async (req, res) => {
+    const confirm = req.body.confirm;
+    const ids = req.body.ids;
+    
     try {
-        await educationModel.deleteMany({});
-        res.status(200).json({message: "All educations have been deleted."});
+        if (!ids && confirm) { 
+            await educationModel.deleteMany({});
+            return res.status(200).json({message: "All educations have been deleted."});
+        }
+        else if (ids) {
+            await educationModel.deleteMany({_id: { $in: ids }});
+            return res.status(200).json({message: "Specified educations have been deleted."});
+        }
+        else {
+            return res.status(400).json({error: "No educations were deleted. Please either provide IDs or confirm deletion of all educations."});
+        }
     }
     catch (err) {
         return res.status(400).json({error: errorHandler(err)});
@@ -78,4 +90,4 @@ const update = async (req, res) => {
     }
 }
 
-export default { create, educationByID, list, read, remove, removeAll, update }
+export default { create, educationByID, list, read, remove, removeMany, update }

@@ -1,6 +1,6 @@
 import '../../styles/ContactForm.css'; 
 
-import {  useState } from 'react'; 
+import { useState } from 'react'; 
 
 export default function ContactForm() { 
     const [formData, setFormData] = useState({
@@ -26,9 +26,11 @@ export default function ContactForm() {
                     email : '', 
                     firstname : '',
                     lastname : '',
-                    message : 'Thanks for reaching out! I will get back to you as soon as possible.',
+                    message : '',
                     phone : '',
                 });
+
+                window.alert('Your message has been sent successfully! Thank you for reaching out.');
             } 
             else {
                 const errorText = await res.text();

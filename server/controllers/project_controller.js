@@ -56,10 +56,22 @@ const remove = async (req, res) => {
     }
 }
 
-const removeAll = async (req, res) => {
+const removeMany = async (req, res) => {
+    const confirm = req.body.confirm;
+    const ids = req.body.ids;
+    
     try {
-        await projectModel.deleteMany({});
-        res.status(200).json({message: "All projects have been deleted!"});
+        if (!ids && confirm) { 
+            await projectModel.deleteMany({});
+            res.status(200).json({message: "All projects have been deleted."});
+        }
+        else if (ids) {
+            await projectModel.deleteMany({_id: {$in: ids}});
+            res.status(200).json({message: "Specified projects have been deleted."});
+        }
+        else {
+            return res.status(400).json({error: "No projects were deleted. Please either provide IDs or confirm deletion of all projects."});
+        } 
     }
     catch (err) {
         return res.status(400).json({error: errorHandler(err)});
@@ -78,4 +90,4 @@ const update = async (req, res) => {
     }
 }
 
-export default { create, list, projectByID, read, remove, removeAll, update }
+export default { create, list, projectByID, read, remove, removeMany, update }

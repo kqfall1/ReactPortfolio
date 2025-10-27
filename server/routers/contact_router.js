@@ -7,7 +7,7 @@ const router = express.Router();
 router.route('/')
     .get(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.list)
     .post(contactCtrl.create)
-    .delete(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.removeAll);
+    .delete(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.removeMany);
 router.route('/:contactId')
     /* I decided that only the admin users can read, write, or delete contacts because 
     contacts (that arise from the contact form on the website) are not owned by users. */ 

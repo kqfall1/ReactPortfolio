@@ -7,7 +7,7 @@ const router = express.Router();
 router.route('/')
     .get(authCtrl.requireSignin, authCtrl.isAdmin, userCtrl.list)
     .post(userCtrl.create)
-    .delete(authCtrl.requireSignin, authCtrl.isAdmin, userCtrl.removeAll);
+    .delete(authCtrl.requireSignin, authCtrl.isAdmin, userCtrl.removeMany);
 router.route('/:userId')
     .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.read)
     .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.update)

@@ -1,7 +1,7 @@
 import { config, dbAdminId } from './../../config/config.js'
 import { expressjwt } from 'express-jwt';
 import jwt from 'jsonwebtoken';
-import useModel from '../db/models/userModel.js'; 
+import userModel from '../db/models/user_model.js'; 
 
 //Filters out clients who are not administrators or the owner of a resource
 const hasAuthorization = (req, res, next) => {
@@ -34,7 +34,7 @@ const requireSignin = expressjwt({
 
 const signin = async (req, res) => {
     try {
-        let user = await useModel.findOne({ "email": req.body.email })
+        let user = await userModel.findOne({ "email": req.body.email })
 
         if (!user)
             return res.status(401).json({ error: "User not found" })

@@ -57,21 +57,21 @@ const remove = async (req, res) => {
 }
 
 const removeMany = async (req, res) => {
+    const confirm = req.body.confirm;
     const ids = req.body.ids;
-    let msgStr = ''; 
     
     try {
-        if (!ids) {
+        if (!ids && confirm) {
             await contactModel.deleteMany({});
-            msgStr = "All contacts have been deleted.";
             return res.status(200).json({message: "All contacts have been deleted."});
         }
-        else {
+        else if (ids) {
             await contactModel.deleteMany({_id: { $in: ids }});
-            msgStr = "Specified contacts have been deleted.";
+            return res.status().json({message: "Specified contacts have been deleted."});
         }
-        
-        res.status(200).json({message: msgStr});
+        else {
+            return res.status(400).json({error: "No contacts were deleted. Please either provide IDs or confirm deletion of all contacts."});
+        }
     }
     catch (err) {
         return res.status(400).json({error: errorHandler(err)});

@@ -1,6 +1,6 @@
 import errorHandler from './error_controller.js'; 
 import extend from 'lodash/extend.js'; 
-import userModel from '../db/models/userModel.js'; 
+import userModel from '../db/models/user_model.js'; 
 
 const create = async (req, res) => {
     const user = new userModel(req.body); 
@@ -45,10 +45,21 @@ const remove = async (req, res) => {
     }
 }
 
-const removeAll = async (req, res) => {
+const removeMany = async (req, res) => {
+    const ids = req.body.ids;
+    
     try {
-        await userModel.deleteMany({});
-        res.status(200).json({message: "All users have been removed."});
+        if (!ids && confirm) {
+            await userModel.deleteMany({});
+            res.status(200).json({message: "All users have been removed."});
+        }
+        else if (ids) {
+            await userModel.deleteMany({_id: { $in: ids }});
+            res.status(200).json({message: "Specified users have been removed."});
+        }
+        else {
+            return res.status(400).json({error: "No users were deleted. Please either provide IDs or confirm deletion of all users."});
+        }
     }
     catch (err) {
         return res.status(400).json({error: errorHandler(err)});
@@ -84,4 +95,4 @@ const userByID = async (req, res, next, id) => {
     }
 }
 
-export default { create, list, read, remove, removeAll, update, userByID }; 
+export default { create, list, read, remove, removeMany, update, userByID }; 
