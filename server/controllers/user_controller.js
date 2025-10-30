@@ -45,6 +45,12 @@ const remove = async (req, res) => {
     }
 }
 
+/**
+ * Removes all users if no IDs are specified in the "ids" field of the request body. 
+ * If IDs are specified, only those users are removed.
+ * @param {Request} req A request that should either contain a "confirm" field set to "true"
+ * or an "ids" field containing an array of user IDs for deletion.
+ */
 const removeMany = async (req, res) => {
     const ids = req.body.ids;
     

@@ -17,10 +17,10 @@ export default function ContactForm() {
         try {
             const res = await fetch('http://localhost:3000/api/contacts', {
                 method: 'POST',
-                headers: { 'CONTENT-TYPE': 'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             }); 
-            
+
             if (res.ok) {
                 setFormData({ ...formData,
                     email : '', 
@@ -33,12 +33,13 @@ export default function ContactForm() {
                 window.alert('Your message has been sent successfully! Thank you for reaching out.');
             } 
             else {
-                const errorText = await res.text();
-                console.log('Server error:', errorText);
+                const data = await res.json();
+                console.log('Server error:', data.error);
+                window.alert(data.error);
             }
         }
         catch (err) {
-            console.log('Network error:', err);
+            console.log('Network error: ', err);
         }
     }
     
