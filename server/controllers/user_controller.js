@@ -52,6 +52,7 @@ const remove = async (req, res) => {
  * or an "ids" field containing an array of user IDs for deletion.
  */
 const removeMany = async (req, res) => {
+    const confirm = req.body.confirm;
     const ids = req.body.ids;
     
     try {
