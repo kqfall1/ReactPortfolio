@@ -1,5 +1,5 @@
 import app from "./express.js";
-import { config } from '../config/config.js';
+import config from '../config/config.js';
 import mongoose from 'mongoose';
 import assetRouter from "./routers/assets_router.js";
 

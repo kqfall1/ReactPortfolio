@@ -2,12 +2,36 @@ import errorHandler from './error_controller.js';
 import extend from 'lodash/extend.js'; 
 import userModel from '../db/models/user_model.js'; 
 
+/**
+ * Creates a new user. If the "isAdmin" field is set to true in the request body,
+ * the requester must be an administrator.
+ * @throws Error if the requester is not an administrator but attempts to create
+ * an administrator user.
+ */
 const create = async (req, res) => {
-    const user = new userModel(req.body); 
+    const { firstname, email, isAdmin, lastname, password, username } = req.body;
+    let createAdmin = false; 
+
+    if (isAdmin && req.auth?.isAdmin) {
+        createAdmin = true; 
+    }
 
     try {
+        if (isAdmin && !req.auth?.isAdmin) {
+            throw new Error("Only admins can create admin users.");
+       }
+
+        const user = new userModel({ 
+            firstname, 
+            email, 
+            isAdmin: createAdmin, 
+            lastname, 
+            password, 
+            username
+        }); 
+
         await user.save(); 
-        return res.status(201).json({message: "Successfully signed up!"}); 
+        return res.status(201).json({message: `Successfully created account "${username}"!`}); 
     } 
     catch (err) {
         return res.status(400).json({error: errorHandler(err)})
@@ -46,22 +70,33 @@ const remove = async (req, res) => {
 }
 
 /**
- * Removes all users if no IDs are specified in the "ids" field of the request body. 
- * If IDs are specified, only those users are removed.
+ * Removes all non-administrator users only if no IDs are specified in the "ids" field of 
+ * the request body. If IDs are specified, only specified, non-administrator users are removed.
  * @param {Request} req A request that should either contain a "confirm" field set to "true"
- * or an "ids" field containing an array of user IDs for deletion.
+ * or an "ids" field containing an array of non-administrator user IDs for deletion.
  */
 const removeMany = async (req, res) => {
-    const confirm = req.body.confirm;
-    const ids = req.body.ids;
+    const { confirm, ids } = req.body;
     
     try {
         if (!ids && confirm) {
-            await userModel.deleteMany({});
-            res.status(200).json({message: "All users have been removed."});
+            await userModel.deleteMany({
+                $or: [
+                    { isAdmin: false }, 
+                    { isAdmin: { $exists: false } }
+                ] 
+            });
+
+            res.status(200).json({message: "All non-administrator users have been removed."});
         }
         else if (ids) {
-            await userModel.deleteMany({_id: { $in: ids }});
+            await userModel.deleteMany({
+                $and: [
+                    { _id: { $in: ids } },
+                    { isAdmin: false }
+                ] 
+            });
+
             res.status(200).json({message: "Specified users have been removed."});
         }
         else {

@@ -1,29 +1,34 @@
-import { config, dbAdminId } from './../../config/config.js'
+import config from './../../config/config.js'
 import { expressjwt } from 'express-jwt';
 import jwt from 'jsonwebtoken';
 import userModel from '../db/models/user_model.js'; 
 
-//Filters out clients who are not administrators or the owner of a resource
+/**
+ * Checks if the authenticated user is authorized to access or modify a database 
+ * entry. 
+ * @returns True if the authenticated user is the owner of the database entry or an 
+ * administrator; otherwise, returns false.
+ */
 const hasAuthorization = (req, res, next) => {
-    const authorized = req.profile && req.auth && req.profile._id.toString() === req.auth._id;
+    const isOwner = req.profile && req.profile._id.toString() === req.auth._id;
 
-    if (!authorized && !_isAdmin(req)) {
+    if (!isOwner && (!req.auth || !req.auth.isAdmin)) {
         return res.status(403).json({ error: "User is not authorized" });
     }
 
     next(); 
 }
 
+/**
+ * Checks if the authenticated user is an administrator.
+ * @returns True if the authenticated user is an administrator; otherwise, false.
+ */
 const isAdmin = (req, res, next) => {
-    if (!_isAdmin(req)) { 
+    if (!req.auth || !req.auth.isAdmin) { 
         return res.status(403).json({ error: "User is not authorized as an administrator" });
     }
 
     next(); 
-}
-
-const _isAdmin = (req) => { 
-    return req.auth && req.auth._id.toString() === dbAdminId;
 }
 
 const requireSignin = expressjwt({
@@ -42,7 +47,11 @@ const signin = async (req, res) => {
             return res.status(401).send({ error: "Email and password don't match." })
         }
         
-        const token = jwt.sign({ _id: user._id }, config.jwtSecret)
+        const token = jwt.sign({
+            _id: user._id, 
+            isAdmin: user.isAdmin
+        }, config.jwtSecret); 
+
         res.cookie('t', token, { expire: new Date() + 9999 })
         return res.json({
             token,

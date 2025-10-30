@@ -32,13 +32,13 @@ const projectByID = async (req, res, next, id) => {
         let project = await projectModel.findById(id); 
 
         if (!project)
-            return res.status('400').json({error: "Project not found"}); 
+            return res.status(400).json({error: "Project not found"}); 
 
         req.profile = project; 
         next(); 
     } 
     catch (err) {
-        return res.status('400').json({error: "Could not retrieve project"}); 
+        return res.status(400).json({error: "Could not retrieve project"}); 
     }
 }
 

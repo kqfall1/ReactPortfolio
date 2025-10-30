@@ -18,6 +18,11 @@ const userSchema = new mongoose.Schema({
         maxlength: 32
     }, 
 
+    isAdmin: {
+        type: Boolean, 
+        default: false
+    },
+
     lastname : {
         type: String,
         required: 'Last name is required',
