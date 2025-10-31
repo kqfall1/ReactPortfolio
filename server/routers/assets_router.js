@@ -1,7 +1,9 @@
 import express from 'express';
-const router = express.Router();
+
 const imageRegex = /\/.+\.(svg|png|jpg|png|jpeg)$/;
 const videoRegex = /\/.+\.(mp4|ogv)$/
+
+const router = express.Router();
 
 router.get(imageRegex, (req, res) => {
     const filePath = req.path;

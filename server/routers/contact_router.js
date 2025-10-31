@@ -9,9 +9,6 @@ router.route('/')
     .post(contactCtrl.create)
     .delete(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.removeMany);
 router.route('/:contactId')
-    /**
-     * Only the admin users can read, write, or delete contacts because contacts (that arise 
-     * from the contact form on the website) are not owned by or associated with users. */ 
     .get(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.read)
     .put(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.update)
     .delete(authCtrl.requireSignin, authCtrl.isAdmin, contactCtrl.remove);

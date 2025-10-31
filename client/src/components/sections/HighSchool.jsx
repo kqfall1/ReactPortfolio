@@ -18,7 +18,7 @@ export default function HighSchool() {
                         was enrolled there were difficult but very helpful in preparing me for college.<br/><br/>
                         
                         I most fondly remember some good times I had in some of the programming and computer 
-                        networking courses offered at R.H. King. Shoutout to Mr. Raptu for inspiring me to study 
+                        networking courses offered at R.H. King. Shoutout to Mr. Raptou for inspiring me to study 
                         and pass a Cisco certification test, which I did in Grade 12. I am also glad that I learned
                         the fundamentals of programming there, because they have stuck with me ever since! I didn't 
                         realize how good the curriculum was at R.H. King until I started college. I wish I took my 

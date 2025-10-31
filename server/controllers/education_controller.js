@@ -16,7 +16,7 @@ const create = async (req, res) => {
 
 const educationByID = async (req, res, next, id) => {
     try {
-        let education = await educationModel.findById(id); 
+        const education = await educationModel.findById(id); 
 
         if (!education)
             return res.status(400).json({error: "Education not found"}); 
@@ -63,8 +63,7 @@ const remove = async (req, res) => {
  * or an "ids" field containing an array of education IDs for deletion.
  */
 const removeMany = async (req, res) => {
-    const confirm = req.body.confirm;
-    const ids = req.body.ids;
+    const { confirm, ids } = req.body;
     
     try {
         if (!ids && confirm) { 

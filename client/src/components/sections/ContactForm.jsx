@@ -67,7 +67,7 @@ export default function ContactForm() {
             <label htmlFor="phoneNumberInput">Phone number: </label>
             <input 
                 id="phoneNumberInput" 
-                type="text" 
+                type="phone" 
                 placeholder="999-999-9999" 
                 value={formData.phone} 
                 onChange={(e) => setFormData({ ...formData, phone : e.target.value})}
@@ -76,7 +76,7 @@ export default function ContactForm() {
             <label htmlFor="emailInput">Email: </label>
             <input 
                 id="emailInput" 
-                type="text" 
+                type="email" 
                 placeholder="johndoe@gmail.com" 
                 value={formData.email} 
                 onChange={(e) => setFormData({ ...formData, email : e.target.value})}

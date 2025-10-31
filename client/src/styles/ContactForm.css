@@ -17,6 +17,14 @@
     margin-right: 2.5em; 
 }
 
+.contactForm input:invalid, .contactForm textarea:invalid { 
+    border: 2px solid darkred; 
+}
+
+.contactForm input:valid, .contactForm textarea:valid { 
+    border: 2px solid darkgreen; 
+}
+
 .contactForm textarea { 
     width: 100%;
     height: 7em;  

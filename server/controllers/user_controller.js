@@ -6,7 +6,7 @@ import userModel from '../db/models/user_model.js';
  * Creates a new user. If the "isAdmin" field is set to true in the request body,
  * the requester must be an administrator.
  * @throws Error if the requester is not an administrator but attempts to create
- * an administrator user.
+ * an administrative user.
  */
 const create = async (req, res) => {
     const { firstname, email, isAdmin, lastname, password, username } = req.body;

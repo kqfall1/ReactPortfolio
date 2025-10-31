@@ -57,14 +57,13 @@ const remove = async (req, res) => {
 }
 
 /**
- * Removes all projectss if no IDs are specified in the "ids" field of the request body. 
+ * Removes all projects if no IDs are specified in the "ids" field of the request body. 
  * If IDs are specified, only those projects are removed.
  * @param {Request} req A request that should either contain a "confirm" field set to "true"
  * or an "ids" field containing an array of project IDs for deletion.
  */
 const removeMany = async (req, res) => {
-    const confirm = req.body.confirm;
-    const ids = req.body.ids;
+    const { confirm, ids } = req.body;
     
     try {
         if (!ids && confirm) { 

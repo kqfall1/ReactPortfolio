@@ -15,8 +15,7 @@ export default function College () {
                     behind software engineering (the software development life cycle), English, mathematics, 
                     and even psychology! I'm so grateful to be fortunate enough to pursue my passion for 
                     software. However, I want to make sure I do it the right way and don't cut corners!
-                    <br/><br/><div id="collegePhotoSrcPreamble">Campus Services. Centennial 
-                    College.</div> <a href="https://www.centennialcollege.ca/student-life/campus-services/">
+                    <br/><br/>Campus Services. Centennial College.<br/><a href="https://www.centennialcollege.ca/student-life/campus-services/">
                     https://www.centennialcollege.ca/student-life/campus-services/</a>
                 </p>
             </div>    

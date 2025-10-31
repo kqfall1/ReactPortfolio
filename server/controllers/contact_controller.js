@@ -22,7 +22,6 @@ const contactByID = async (req, res, next, id) => {
 
 const create = async (req, res) => {
     const contact = new contactModel(req.body);   
-    let field; 
 
     try {
         validate(contact);
@@ -36,7 +35,7 @@ const create = async (req, res) => {
 
 const list = async (req, res) => {
     try {
-        let contacts = await contactModel.find().select(
+        const contacts = await contactModel.find().select(
             'createdAt email firstname lastname message phone updatedAt'
         );
 
@@ -68,8 +67,7 @@ const remove = async (req, res) => {
  * or an "ids" field containing an array of contact IDs deletion.
  */
 const removeMany = async (req, res) => {
-    const confirm = req.body.confirm;
-    const ids = req.body.ids;
+    const { confirm, ids } = req.body;
     
     try {
         if (!ids && confirm) {
@@ -103,11 +101,11 @@ const update = async (req, res) => {
 
 function validate(contact) {
     if (emailRegex && !emailRegex.test(contact.email)) {
-        throw new Error(`Invalid email format for \"${contact.email}\".`); 
+        throw new Error(`Invalid email format for "${contact.email}".`); 
     }
 
     else if (phoneRegex && !phoneRegex.test(contact.phone)) {
-        throw new Error(`Invalid phone number format for \"${contact.phone}\".`);
+        throw new Error(`Invalid phone number format for "${contact.phone}".`);
     } 
 }
 
