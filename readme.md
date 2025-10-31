@@ -18,6 +18,8 @@ easier if one is familiar with MEAN or MERN development. I plan on further
 improving my work by enforcing unique emails amongst users, refining my 
 regular expressions even further, and polishing other subtle details. 
 
+I have submitted my work without node modules for the ease of file transfer. 
+
 - Quinn Keenan
 - 30/10/2025, 8:38PM
 - https://github.com/kqfall1/ReactPortfolio
