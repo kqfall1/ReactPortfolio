@@ -1,8 +1,8 @@
-import '../../styles/Education.css'
-
 import College from '../sections/College';
+import CreateEducationForm from '../sections/CreateEducationForm';
 import Footer from '../sections/Footer'; 
 import HighSchool from '../sections/HighSchool';
+import '../../styles/Education.css'; 
 
 export default function Education() {
     return ( 
@@ -11,6 +11,7 @@ export default function Education() {
                 <h1 className="h1Margins">Education</h1>
                 <College className="horizontalSectionSidebar"/>
                 <HighSchool className="horizontalSectionSidebar"/>
+                <CreateEducationForm />
             </div>
             <Footer/>
         </>

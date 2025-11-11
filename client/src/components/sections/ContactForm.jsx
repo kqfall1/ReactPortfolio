@@ -15,7 +15,7 @@ export default function ContactForm() {
         e.preventDefault(); 
         
         try {
-            await create('api/contacts', formData);
+            await create('api/contacts', null, formData);
 
             setFormData({
                 email : '', 

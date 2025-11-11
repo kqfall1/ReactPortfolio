@@ -11,10 +11,6 @@ export default defineConfig({
       '/api': {
         target: `http://localhost:${PORT}`,
         changeOrigin: true,
-      },
-      '/auth' : {
-        target: `http://localhost:${PORT}`,
-        changeOrigin: true,
       }
     }
   }

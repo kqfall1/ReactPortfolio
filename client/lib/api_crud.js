@@ -3,18 +3,26 @@ import { handleResponse, handleError } from './helpers.js';
 /**
  * Creates a new resource by sending a POST request to the specified API route.
  * @param {*} apiRoute The route to the API. 
+ * @param {*} credentials An object with authentication credential fields. Pass null 
+ * if no authentication is needed.
  * @param {*} obj An object with the fields needed to create the resource.
  * @returns A JSON object representing the created resource. 
  * @throws An error if the request fails or the response cannot be parsed as JSON.
  */
-const create = async (apiRoute, obj) => {
+const create = async (apiRoute, credentials, obj) => {
+    const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+    
+    if (credentials && credentials.t) {
+        headers['Authorization'] = `Bearer ${credentials.t}`
+    }
+    
     try {
         const res = await fetch(apiRoute, {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }, 
+            headers: headers,
             body: JSON.stringify(obj)
         })
 

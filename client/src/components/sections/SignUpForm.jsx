@@ -1,7 +1,7 @@
 import { create } from '../../../lib/api_crud.js'; 
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'; 
-import '../../styles/Form.css'
+import '../../styles/Form.css'; 
 
 export default function ContactForm() {
     const [formData, setFormData] = useState({
@@ -12,11 +12,13 @@ export default function ContactForm() {
         username: '',
     });
 
+    const navigate = useNavigate();
+
     const submission = async (e) => {
         e.preventDefault(); 
 
         try {
-            await create('api/users', formData);
+            await create('api/users', null, formData);
 
             setFormData({
                 email : '', 
