@@ -36,23 +36,28 @@ const signIn = async (credentials) => {
 
 /**
  * Signs a user out of their account. 
- * @returns 
+ * @returns A string indicating success or failure. 
+ * @throws An error if sign out was unsuccessful.
  */
 const signOut = async () => {
-    try {
-        const res = await fetch(`/api/auth/signout`, {method: 'GET'}) 
+    if (auth.isAuthenticated()) {
+        try {
+            const res = await fetch(`/api/auth/signout`, {method: 'GET'}) 
 
-        console.log(res)
-        const data = await handleResponse(res)
+            console.log(res)
+            const data = await handleResponse(res)
 
-        if (res.ok) {
-            auth.clearJwt()
+            if (res.ok) {
+                auth.clearJwt()
+                window.alert("Successfully signed out.")
+            }
+
+            console.log(data)
+            return data
+        } 
+        catch (err) {
+            return handleError(err);
         }
-
-        return data
-    } 
-    catch (err) {
-        return handleError(err);
     }
 }     
 
