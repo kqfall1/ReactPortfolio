@@ -5,6 +5,8 @@ import Home from '../pages/Home';
 import NavBar from '../sections/NavBar';
 import Projects from '../pages/Projects';
 import { Routes, Route } from 'react-router-dom';
+import SignIn from '../pages/SignIn'
+import SignUp from '../pages/SignUp'
 
 export default function MainRouter() {
     return (
@@ -15,6 +17,8 @@ export default function MainRouter() {
                     <Route path="/education" element={<Education />} />
                     <Route index element={<Home />} />
                     <Route path="/projects" element={<Projects />} />
+                    <Route path="/signin" element={<SignIn />} />
+                    <Route path="/signup" element={<SignUp />} />
                 </Route>
             </Routes>
         );

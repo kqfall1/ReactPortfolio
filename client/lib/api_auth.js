@@ -1,0 +1,59 @@
+import auth from './auth_helpers.js'
+import { handleError, handleResponse } from './helpers.js';
+
+/**
+ * Signs a user into their account if the credentials they enter are correct.
+ * @param {*} credentials An object with the fields needed to sign in. 
+ * @returns An object representing the user signed in alongside a JWT token for 
+ * the current session. 
+ * @throws An error if the credentials are invalid. 
+ */
+const signIn = async (credentials) => {
+    try {
+        const res = await fetch(`/api/auth/signin`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        })
+
+        console.log(res)
+        const data = await handleResponse(res);
+
+        if (res.ok && data.token && typeof data.token === 'string') {
+            auth.authenticate(data.token)
+        }
+
+        console.log(data)
+        return data
+    }
+    catch (err) {
+        return handleError(err);
+    } 
+}
+
+/**
+ * Signs a user out of their account. 
+ * @returns 
+ */
+const signOut = async () => {
+    try {
+        const res = await fetch(`/api/auth/signout`, {method: 'GET'}) 
+
+        console.log(res)
+        const data = await handleResponse(res)
+
+        if (res.ok) {
+            auth.clearJwt()
+        }
+
+        return data
+    } 
+    catch (err) {
+        return handleError(err);
+    }
+}     
+
+export { signIn, signOut }

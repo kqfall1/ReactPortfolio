@@ -39,7 +39,7 @@ const requireSignin = expressjwt({
 
 const signin = async (req, res) => {
     try {
-        let user = await userModel.findOne({ "email": req.body.email })
+        const user = await userModel.findOne({ "email": req.body.email })
 
         if (!user)
             return res.status(401).json({ error: "User not found" })

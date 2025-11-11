@@ -1,8 +1,8 @@
-import '../../styles/NavBar.css';
-
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/Logo.png'; 
 import { Outlet } from 'react-router-dom';
+import { signOut } from '../../../lib/api_auth.js'
+import '../../styles/NavBar.css';
 
 export default function NavBar() {
     return (
@@ -17,9 +17,13 @@ export default function NavBar() {
                     <Link to="/about">About</Link>
                     <Link to="/contact">Contact</Link>
                     <Link to="/education">Education</Link> 
-                    <a href="https://github.com/kqfall1" target="_blank">GitHub</a>
                     <Link to="/projects">Projects</Link> 
-                    <a href="https://www.linkedin.com/in/quinn-keenan-616a4a383/" target="_blank">LinkedIn</a>
+                    <Link to="/signin">Sign In</Link>
+                    <Link to="/signup">Sign Up</Link>
+                    <button onClick={async () => {
+                        signOut()
+                        window.alert("Successfully signed out.")
+                    }}>Sign Out</button>
                 </nav>
             </div>
             <hr />

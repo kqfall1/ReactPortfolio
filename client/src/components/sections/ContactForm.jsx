@@ -1,5 +1,5 @@
-import '../../styles/ContactForm.css'; 
-
+import { create } from '../../../lib/api_crud.js'; 
+import '../../styles/Form.css'; 
 import { useState } from 'react'; 
 
 export default function ContactForm() { 
@@ -11,40 +11,29 @@ export default function ContactForm() {
         phone: '',
     });
     
-    const handleContactFormSubmission = async (e) => { 
+    const submission = async (e) => { 
         e.preventDefault(); 
         
         try {
-            const res = await fetch('http://localhost:3000/api/contacts', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-            }); 
+            await create('api/contacts', formData);
 
-            if (res.ok) {
-                setFormData({ ...formData,
-                    email : '', 
-                    firstname : '',
-                    lastname : '',
-                    message : '',
-                    phone : '',
-                });
+            setFormData({
+                email : '', 
+                firstname : '',
+                lastname : '',
+                message : '',
+                phone : '',
+            });
 
-                window.alert('Your message has been sent successfully! Thank you for reaching out.');
-            } 
-            else {
-                const data = await res.json();
-                console.log('Server error:', data.error);
-                window.alert(data.error);
-            }
+            window.alert('Your message has been sent successfully! Thank you for reaching out.');
         }
         catch (err) {
-            console.log('Network error: ', err);
+            window.alert(err)
         }
     }
     
     return ( 
-        <form className="contactForm" onSubmit={handleContactFormSubmission}> 
+        <form className="contactForm" onSubmit={submission}> 
             <label htmlFor="firstNameInput">First name: </label>
             <input 
                 id="firstNameInput" 

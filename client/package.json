@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "compression": "^1.8.1",
     "concurrently": "^9.2.1",
+    "cors": "^2.8.5",
+    "helmet": "^8.1.0",
     "nodemon": "^3.1.10",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
