@@ -3,11 +3,7 @@ import { useState } from 'react';
 import '../../styles/Form.css'; 
 
 export default function CreateEducationForm() {
-    const [formData, setFormData] = useState({
-        completed: null, 
-        description: '', 
-        title: '',
-    })  
+    const [formData, setFormData] = useState(INITIAL_STATE)
 
     const submission = async (e) => {
         e.preventDefault();
@@ -19,12 +15,7 @@ export default function CreateEducationForm() {
                 formData
             );
 
-            setFormData({
-                completed: null, 
-                description: '', 
-                title: '',
-            });
-
+            setFormData(INITIAL_STATE);
             window.alert('You have successfully added an education entry!');
         }
         catch (err) {
@@ -45,14 +36,32 @@ export default function CreateEducationForm() {
                     onChange={(e) => setFormData({ ...formData, title : e.target.value})}
                     required
                     autoFocus
-                /> 
-                <label htmlFor="educationCompletedInput">Completed:</label>
+                />
+                <label htmlFor="educationLocationInput">Location:</label>
                 <input 
-                    id="educationCompletedInput" 
-                    type="Date"
+                    id="educationLocationInput"
+                    type="text"
+                    placeholder="University of Toronto"
+                    value={formData.location}
+                    onChange={(e) => setFormData({ ...formData, location : e.target.value})}
+                    required
+                /><br /> 
+                <label htmlFor="educationStartInput">Start:</label>
+                <input 
+                    id="educationStartInput" 
+                    type="date"
                     placeholder="2022-01-01"
-                    value={formData.completed}
-                    onChange={(e) => setFormData({ ...formData, completed : e.target.value})}
+                    value={formData.start}
+                    onChange={(e) => setFormData({ ...formData, start : e.target.value})}
+                    required
+                />
+                <label htmlFor="educationEndInput">End:</label>
+                <input 
+                    id="educationEndInput" 
+                    type="date"
+                    placeholder="2022-12-01"
+                    value={formData.end}
+                    onChange={(e) => setFormData({ ...formData, end : e.target.value})}
                     required
                 /><br />
                 <label htmlFor="educationDescriptionInput">Description:</label>
@@ -67,4 +76,12 @@ export default function CreateEducationForm() {
             </form> 
         </>
     )
+}
+
+const INITIAL_STATE = {
+    description: '', 
+    end: '', 
+    location: '', 
+    start: '',
+    title: '',
 }

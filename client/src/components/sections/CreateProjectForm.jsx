@@ -3,11 +3,7 @@ import { useState } from 'react';
 import '../../styles/Form.css'; 
 
 export default function CreateProjectForm() {
-    const [formData, setFormData] = useState({
-        completed: '',
-        description: '',
-        title: ''
-    })
+    const [formData, setFormData] = useState(INITIAL_STATE)
 
     const submission = async (e) => {
         e.preventDefault();
@@ -19,12 +15,7 @@ export default function CreateProjectForm() {
                 formData
             )
 
-            setFormData({
-                completed: '',
-                description: '',
-                title: ''
-            })
-
+            setFormData(INITIAL_STATE);
             window.alert('You have successfully added a project entry!');
         }
         catch (err) {
@@ -46,13 +37,40 @@ export default function CreateProjectForm() {
                     required
                     autoFocus
                 /> 
-                <label htmlFor="projectCompletedInput">Completed:</label>
+                <label htmlFor="projectLinkInput">Project Link:</label>
                 <input 
-                    id="projectCompletedInput" 
-                    type="Date"
+                    id="projectLinkInput"
+                    type="text"
+                    placeholder="htttps://github.com/kqfall1/ReactPortfolio"
+                    value={formData.projectLink}
+                    onChange={(e) => setFormData({ ...formData, projectLink : e.target.value})}
+                    required
+                /><br />
+                <label htmlFor="projectStartInput">Start:</label>
+                <input 
+                    id="projectStartInput"
+                    type="date"
                     placeholder="2022-01-01"
-                    value={formData.completed}
-                    onChange={(e) => setFormData({ ...formData, completed : e.target.value})}
+                    value={formData.start}
+                    onChange={(e) => setFormData({ ...formData, start : e.target.value})}
+                    required
+                />
+                <label htmlFor="projectEndInput">End:</label>
+                <input
+                    id="projectEndInput"
+                    type="date"
+                    placeholder="2022-12-31"    
+                    value={formData.end}
+                    onChange={(e) => setFormData({ ...formData, end : e.target.value})}
+                    required
+                /><br />
+                <label htmlFor="projectPhotoPathInput">Photo Path:</label>
+                <input
+                    id="projectPhotoPathInput"
+                    type="text"
+                    placeholder="../../assets/healthhome.png"
+                    value={formData.photoPath}
+                    onChange={(e) => setFormData({ ...formData, photoPath : e.target.value})}
                     required
                 /><br />
                 <label htmlFor="projectDescriptionInput">Description:</label>
@@ -68,4 +86,13 @@ export default function CreateProjectForm() {
             </form> 
         </>
     )
+}
+
+const INITIAL_STATE = {
+    description: '',
+    end: '', 
+    photoPath: '', 
+    projectLink: '',
+    start: '',
+    title: ''
 }

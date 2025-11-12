@@ -15,7 +15,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: 'First name is required',
         trim: true,
-        maxlength: 32
+        maxlength: 32, 
+        minlength: 2
     }, 
 
     isAdmin: {
@@ -27,13 +28,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: 'Last name is required',
         trim: true,
-        maxlength: 32
+        maxlength: 32, 
+        minlength: 2
     }, 
 
     hashed_password: {
         type: String,
         required: 'Password is required', 
-        maxlength: 64
+        maxlength: 64, 
+        minlength: 2
     }, 
 
     username: {

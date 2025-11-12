@@ -4,12 +4,12 @@ import userModel from '../db/models/user_model.js';
 
 /**
  * Creates a new user. If the "isAdmin" field is set to true in the request body,
- * the requester must be an administrator.
+ * the requester must be an administrator for an administrative user to be created.
  * @throws Error if the requester is not an administrator but attempts to create
  * an administrative user.
  */
 const create = async (req, res) => {
-    const { firstname, email, isAdmin, lastname, password, username } = req.body;
+    const {  email, firstname, isAdmin, lastname, password, username } = req.body;
     let createAdmin = false; 
 
     if (isAdmin && req.auth?.isAdmin) {
@@ -17,10 +17,6 @@ const create = async (req, res) => {
     }
 
     try {
-        if (isAdmin && !req.auth?.isAdmin) {
-            throw new Error("Only admins can create admin users.");
-       }
-
         const user = new userModel({ 
             firstname, 
             email, 
@@ -31,7 +27,7 @@ const create = async (req, res) => {
         }); 
 
         await user.save(); 
-        return res.status(201).json({message: `Successfully created account "${username}"!`}); 
+        return res.status(201).json({message: `Successfully created account '${username}'!`}); 
     } 
     catch (err) {
         return res.status(400).json({error: errorHandler(err)})

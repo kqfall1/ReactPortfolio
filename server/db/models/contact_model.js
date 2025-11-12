@@ -5,28 +5,32 @@ const contactSchema = new mongoose.Schema({
         type: String,
         required: 'Email is required',
         trim: true,
-        maxlength: 32
+        maxlength: 32, 
+        match: [/.+\@.+\..+/, 'Please enter a valid email address']
     }, 
     
     firstname: {
         type: String,
         required: 'First name is required',
         trim: true,
-        maxlength: 32
+        maxlength: 32,
+        minlength: 2
     }, 
 
     lastname : {
         type: String,
         required: 'Last name is required',
         trim: true,
-        maxlength: 32
+        maxlength: 32, 
+        minlength: 2
     }, 
 
     message: {
         type: String,
         required: 'Message is required',
         trim: true,
-        maxlength: 1024
+        maxlength: 1024,
+        minlength: 8
     }, 
 
     phone: {
