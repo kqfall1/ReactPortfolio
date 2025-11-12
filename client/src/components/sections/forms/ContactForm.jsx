@@ -1,30 +1,16 @@
-import { create } from '../../../lib/api_crud.js'; 
-import '../../styles/Form.css'; 
+import { create } from '../../../../lib/api_crud.js'; 
 import { useState } from 'react'; 
+import '../../../styles/Form.css'; 
 
 export default function ContactForm() { 
-    const [formData, setFormData] = useState({
-        email: '',    
-        firstname: '', 
-        lastname: '',
-        message: '', 
-        phone: '',
-    });
+    const [formData, setFormData] = useState(INITIAL_STATE);
     
     const submission = async (e) => { 
         e.preventDefault(); 
         
         try {
             await create('api/contacts', null, formData);
-
-            setFormData({
-                email : '', 
-                firstname : '',
-                lastname : '',
-                message : '',
-                phone : '',
-            });
-
+            setFormData(INITIAL_STATE);
             window.alert('Your message has been sent successfully! Thank you for reaching out.');
         }
         catch (err) {
@@ -60,6 +46,7 @@ export default function ContactForm() {
                 placeholder="999-999-9999" 
                 value={formData.phone} 
                 onChange={(e) => setFormData({ ...formData, phone : e.target.value})}
+                match={/^\+?[0-9\s\-().]{7,20}$/}
                 required
             />
             <label htmlFor="emailInput">Email: </label>
@@ -69,6 +56,7 @@ export default function ContactForm() {
                 placeholder="johndoe@gmail.com" 
                 value={formData.email} 
                 onChange={(e) => setFormData({ ...formData, email : e.target.value})}
+                match={/^\S+@\S+\.\S+$/}
                 required
             /><br />
             <textarea
@@ -79,4 +67,12 @@ export default function ContactForm() {
             <button id="submit">Submit</button>
         </form>     
     )
+}
+
+const INITIAL_STATE = {
+    email: '',    
+    firstname: '', 
+    lastname: '',
+    message: '', 
+    phone: ''
 }

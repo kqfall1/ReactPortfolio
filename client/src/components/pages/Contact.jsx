@@ -1,4 +1,4 @@
-import ContactForm from '../sections/ContactForm.jsx'; 
+import ContactForm from '../sections/forms/ContactForm.jsx'; 
 import Footer from '../sections/Footer.jsx'; 
 
 export default function Contact() {

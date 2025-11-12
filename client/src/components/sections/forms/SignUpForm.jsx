@@ -1,7 +1,7 @@
-import { create } from '../../../lib/api_crud.js'; 
+import { create } from '../../../../lib/api_crud.js'; 
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'; 
-import '../../styles/Form.css'; 
+import '../../../styles/Form.css'; 
 
 export default function ContactForm() {
     const [formData, setFormData] = useState({

@@ -1,5 +1,5 @@
 import Footer from '../sections/Footer.jsx';
-import SignUpForm from '../sections/SignUpForm.jsx';
+import SignUpForm from '../sections/forms/SignUpForm.jsx';
 
 export default function SignUp() {
     return (

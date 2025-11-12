@@ -1,8 +1,8 @@
-import auth from '../../../lib/auth_helpers.js'
-import { signIn } from '../../../lib/api_auth.js'
+import auth from '../../../../lib/auth_helpers.js'
+import { signIn } from '../../../../lib/api_auth.js'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'; 
-import '../../styles/Form.css'
+import '../../../styles/Form.css'
 
 export default function SignInForm() {
     const [formData, setFormData] = useState({

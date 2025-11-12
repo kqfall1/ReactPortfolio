@@ -1,5 +1,5 @@
 import BlackjackEngine from '../sections/BlackjackEngine.jsx';
-import CreateProjectForm from '../sections/CreateProjectForm.jsx';
+import ProjectForm from '../sections/forms/ProjectForm.jsx';
 import Footer from '../sections/Footer.jsx'; 
 import HealthHome from '../sections/HealthHome.jsx'; 
 import PetFramework from '../sections/PetFramework.jsx'; 
@@ -12,7 +12,7 @@ export default function Projects() {
                 <BlackjackEngine className="horizontalSectionSidebar"/>
                 <PetFramework className="horizontalSectionSidebar"/>
                 <HealthHome className="horizontalSectionSidebar"/>
-                <CreateProjectForm />
+                <ProjectForm />
             </div>
             <Footer/>
         </>

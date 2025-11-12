@@ -1,8 +1,8 @@
-import { create } from '../../../lib/api_crud.js'; 
+import { create } from '../../../../lib/api_crud.js'; 
 import { useState } from 'react'; 
-import '../../styles/Form.css'; 
+import '../../../styles/Form.css'; 
 
-export default function CreateEducationForm() {
+export default function EducationForm() {
     const [formData, setFormData] = useState(INITIAL_STATE)
 
     const submission = async (e) => {

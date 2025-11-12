@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: 'Email is required',
         trim: true,
-        maxlength: 32
+        maxlength: 32, 
+        match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address']
     }, 
     
     firstname: {

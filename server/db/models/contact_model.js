@@ -6,7 +6,7 @@ const contactSchema = new mongoose.Schema({
         required: 'Email is required',
         trim: true,
         maxlength: 32, 
-        match: [/.+\@.+\..+/, 'Please enter a valid email address']
+        match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address']
     }, 
     
     firstname: {
@@ -35,9 +35,11 @@ const contactSchema = new mongoose.Schema({
 
     phone: {
         type: String,
-        maxlength: 15, 
+        trim: true, 
         required: 'Phone number is required',
-        trim: true,
+        maxlength: 20, 
+        minlength: 7,
+        match: [/^\+?[0-9\s\-().]{7,20}$/, 'Please enter a valid phone number']
     }
 }, {timestamps: true}); 
 

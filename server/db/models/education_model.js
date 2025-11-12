@@ -23,7 +23,7 @@ const educationSchema = new mongoose.Schema({
         type: String,
         required: 'Education location is required',
         trim: true,
-        maxlength: 128,
+        maxlength: 64,
         minlength: 2
     }, 
 
