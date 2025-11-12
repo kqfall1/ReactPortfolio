@@ -10,14 +10,26 @@ export default function ContactForm() {
     const submission = async (e) => {
         e.preventDefault(); 
 
+        if (!validatePassword(formData.password)) {
+            window.alert('Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.');
+            return;
+        }
+        
         try {
-            await create('api/users', null, formData);
-            setFormData(INITIAL_STATE);
-            window.alert('You have signed up successfully! Welcome aboard!');
-            navigate('/')
+            const user = await create('api/users', null, formData);
+
+            if (!user || user.error) {
+                window.alert('Your sign up was unsuccessful.');
+            }
+            else {
+                setFormData(INITIAL_STATE);
+                window.alert('You have signed up successfully! Welcome aboard!');
+                navigate('/')
+            }
         }
         catch (err) {
-            window.alert(err)
+            console.log(err)
+            window.alert('An unexpected error occurred. Please try again later.');
         }
     }
 
@@ -82,3 +94,17 @@ const INITIAL_STATE = {
     password: '',
     username: ''
 }
+
+const validatePassword = (password) => {
+    const MIN_LENGTH = 8;
+    const HAS_UPPERCASE = /[A-Z]/.test(password);
+    const HAS_LOWERCASE = /[a-z]/.test(password);
+    const HAS_NUMBER = /[0-9]/.test(password);
+    const HAS_SPECIAL_CHAR = /[!@#$%^&*(),.?":{}|<>]/.test(password);  
+
+    return password.length >= MIN_LENGTH 
+        && HAS_UPPERCASE 
+        && HAS_LOWERCASE 
+        && HAS_NUMBER 
+        && HAS_SPECIAL_CHAR;
+} 

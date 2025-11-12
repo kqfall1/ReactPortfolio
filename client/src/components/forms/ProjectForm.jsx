@@ -22,14 +22,16 @@ export default function CreateProjectForm() {
             )
 
             if (!project || project.error) {
-                throw new Error('Failed to create project entry. Please try again later.');
+                window.alert('Failed to create project entry.');
             }
-
-            setFormData(INITIAL_STATE);
-            window.alert('You have successfully added a project entry!');
+            else {
+                setFormData(INITIAL_STATE);
+                window.alert('You have successfully added a project entry!');
+            }
         }
         catch (err) {
-            window.alert(err)
+            console.log(err)
+            window.alert('An unexpected error occurred. Please try again later.');
         }
     }
 
