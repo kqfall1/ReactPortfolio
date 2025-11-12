@@ -11,7 +11,7 @@ const projectSchema = new mongoose.Schema({
         type: Date, 
         validate: {
             validator: function(value) {
-                return value >= this.start;
+                return !value || value >= this.start;
             }, 
             message: 'End date must be greater than or equal to start date.'
         } 

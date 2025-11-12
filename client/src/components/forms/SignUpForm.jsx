@@ -42,7 +42,7 @@ export default function ContactForm() {
                 onChange={(e) => setFormData({ ...formData, lastname : e.target.value})}
                 required
             /><br />
-            <label htmlFor="emailInput">Username: </label>
+            <label htmlFor="emailInput">Email: </label>
             <input
                 id="emailInput"
                 type="email"

@@ -5,15 +5,25 @@ import '../../styles/Form.css';
 export default function CreateProjectForm() {
     const [formData, setFormData] = useState(INITIAL_STATE)
 
+    const _formData = {
+        ...formData, 
+        start: new Date(formData.start),
+        end: formData.end ? new Date(formData.end) : null,
+    }
+
     const submission = async (e) => {
         e.preventDefault();
 
         try {
-            await create(
+            const project = await create(
                 '/api/projects', 
                 { t: JSON.parse(localStorage.getItem('jwt')) }, 
-                formData
+                _formData
             )
+
+            if (!project || project.error) {
+                throw new Error('Failed to create project entry. Please try again later.');
+            }
 
             setFormData(INITIAL_STATE);
             window.alert('You have successfully added a project entry!');
@@ -62,7 +72,6 @@ export default function CreateProjectForm() {
                     placeholder="2022-12-31"    
                     value={formData.end}
                     onChange={(e) => setFormData({ ...formData, end : e.target.value})}
-                    required
                 /><br />
                 <label htmlFor="projectPhotoPathInput">Photo Path:</label>
                 <input

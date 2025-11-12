@@ -5,21 +5,33 @@ import '../../styles/Form.css';
 export default function EducationForm() {
     const [formData, setFormData] = useState(INITIAL_STATE)
 
+    const _formData = {
+        ...formData, 
+        start: new Date(formData.start),
+        end: formData.end ? new Date(formData.end) : null,
+    }
+
     const submission = async (e) => {
         e.preventDefault();
 
         try {
-            await create(
+            const education = await create(
                 '/api/educations', 
                 { t: JSON.parse(localStorage.getItem('jwt')) }, 
-                formData
+                _formData
             );
 
-            setFormData(INITIAL_STATE);
-            window.alert('You have successfully added an education entry!');
+            if (!education || education.error) {
+                window.alert('Failed to create education entry.');
+            }
+            else {
+                setFormData(INITIAL_STATE);
+                window.alert('You have successfully added an education entry!');
+            } 
         }
         catch (err) {
-            window.alert(err)
+            console.log(err)
+            window.alert("An unexpected error occurred. Please try again later.")
         }
     } 
 
@@ -50,7 +62,6 @@ export default function EducationForm() {
                 <input 
                     id="educationStartInput" 
                     type="date"
-                    placeholder="2022-01-01"
                     value={formData.start}
                     onChange={(e) => setFormData({ ...formData, start : e.target.value})}
                     required
@@ -59,9 +70,16 @@ export default function EducationForm() {
                 <input 
                     id="educationEndInput" 
                     type="date"
-                    placeholder="2022-12-01"
                     value={formData.end}
                     onChange={(e) => setFormData({ ...formData, end : e.target.value})}
+                /><br />
+                <label htmlFor="educationPhotoPathInput">Photo Path:</label>
+                <input 
+                    id="educationPhotoPathInput"
+                    type="text"
+                    placeholder="../../assets/university.png"
+                    value={formData.photoPath}
+                    onChange={(e) => setFormData({ ...formData, photoPath : e.target.value})}
                     required
                 /><br />
                 <label htmlFor="educationDescriptionInput">Description:</label>
@@ -82,6 +100,7 @@ const INITIAL_STATE = {
     description: '', 
     end: '', 
     location: '', 
+    photoPath: '',
     start: '',
     title: '',
 }

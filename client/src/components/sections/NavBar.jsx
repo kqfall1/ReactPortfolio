@@ -27,16 +27,12 @@ export default function NavBar() {
                     <Link to="/contact">Contact</Link>
                     <Link to="/education">Education</Link> 
                     <a href="https:/www.github.com/kqfall1" target="_blank">GitHub</a>
-                    <a 
-                        href="https://www.linkedin.com/in/quinn-keenan-616a4a383/" 
-                        target="_blank"
-                    >LinkedIn</a>
                     <Link to="/projects">Projects</Link> 
-                    <button onClick={async () => {
+                    <a onClick={async () => {
                         await signOut();
                         setSession(auth.isAuthenticated());
                         navigate('/');
-                    }}>Sign Out</button>
+                    }}>Sign Out</a>
                 </nav>
             </div>
             <hr />

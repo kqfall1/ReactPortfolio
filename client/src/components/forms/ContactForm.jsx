@@ -9,12 +9,19 @@ export default function ContactForm() {
         e.preventDefault(); 
         
         try {
-            await create('api/contacts', null, formData);
-            setFormData(INITIAL_STATE);
-            window.alert('Your message has been sent successfully! Thank you for reaching out.');
-        }
+            const contact = await create('/api/contacts', null, formData);
+
+            if (!contact || contact.error) {
+                window.alert("Your message was not sent.");
+            }
+            else {
+                setFormData(INITIAL_STATE);
+                window.alert('Your message has been sent successfully! Thank you for reaching out.');
+            }
+        } 
         catch (err) {
-            window.alert(err)
+            console.log(err)
+            window.alert("An unexpected error occurred. Please try again later.")
         }
     }
     

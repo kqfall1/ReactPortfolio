@@ -15,15 +15,22 @@ export default function SignInForm() {
 
     const submission = async (e) => {
         e.preventDefault(); 
-        await signIn(formData)
-            
-        if (auth.isAuthenticated()) {
-            setFormData(INITIAL_STATE)
-            window.alert('Successfully signed in.')
-            navigate('/')
+
+        try {
+            await signIn(formData)
+
+            if (auth.isAuthenticated()) {
+                setFormData(INITIAL_STATE)
+                window.alert('Successfully signed in.')
+                navigate('/')
+            }
+            else {
+                window.alert('You have entered invalid credentials.')
+            }
         }
-        else {
-            window.alert('You have entered invalid credentials.')
+        catch (err) {
+            console.log(err)
+            window.alert("An unexpected error occurred. Please try again later.")
         }
     }
 

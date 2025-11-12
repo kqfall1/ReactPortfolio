@@ -13,7 +13,7 @@ const educationSchema = new mongoose.Schema({
         type: Date,
         validate: {
             validator: function(value) {
-                return value >= this.start;
+                return !value || value >= this.start;
             }, 
             message: 'End date must be greater than or equal to start date.'
         }
@@ -26,6 +26,14 @@ const educationSchema = new mongoose.Schema({
         maxlength: 64,
         minlength: 2
     }, 
+
+    photoPath: {
+        type: String,
+        trim: true,
+        maxlength: 64,
+        minlength: 1, 
+        required: 'Education photo path is required'
+    },
 
     start: {
         type: Date,
