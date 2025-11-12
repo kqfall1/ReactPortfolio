@@ -1,5 +1,5 @@
 import College from '../sections/College';
-import EducationForm from '../sections/forms/EducationForm';
+import EducationForm from '../forms/EducationForm';
 import Footer from '../sections/Footer'; 
 import HighSchool from '../sections/HighSchool';
 import '../../styles/Education.css'; 

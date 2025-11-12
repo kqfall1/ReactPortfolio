@@ -19,14 +19,14 @@ const signIn = async (credentials) => {
             body: JSON.stringify(credentials)
         })
 
-        console.log(res)
+        //console.log(res)
         const data = await handleResponse(res);
 
         if (res.ok && data.token && typeof data.token === 'string') {
             auth.authenticate(data.token)
         }
 
-        console.log(data)
+        //console.log(data)
         return data
     }
     catch (err) {

@@ -1,17 +1,10 @@
-import { create } from '../../../../lib/api_crud.js'; 
+import { create } from '../../../lib/api_crud.js'; 
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'; 
-import '../../../styles/Form.css'; 
+import '../../styles/Form.css'; 
 
 export default function ContactForm() {
-    const [formData, setFormData] = useState({
-        email: '',    
-        firstname: '',
-        lastname: '',
-        password: '',
-        username: '',
-    });
-
+    const [formData, setFormData] = useState(INITIAL_STATE);
     const navigate = useNavigate();
 
     const submission = async (e) => {
@@ -19,15 +12,7 @@ export default function ContactForm() {
 
         try {
             await create('api/users', null, formData);
-
-            setFormData({
-                email : '', 
-                firstname : '',
-                lastname : '',
-                password : '',
-                username : '',
-            });
-
+            setFormData(INITIAL_STATE);
             window.alert('You have signed up successfully! Welcome aboard!');
             navigate('/')
         }
@@ -64,6 +49,7 @@ export default function ContactForm() {
                 placeholder="something@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email : e.target.value})}
+                match={/^\S+@\S+\.\S+$/}
                 required
             />
             <label htmlFor="usernameInput">Username: </label>
@@ -87,4 +73,12 @@ export default function ContactForm() {
             <button id="submit">Submit</button>
         </form> 
     )
+}
+
+const INITIAL_STATE = {
+    email: '',    
+    firstname: '',
+    lastname: '',
+    password: '',
+    username: ''
 }

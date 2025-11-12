@@ -1,28 +1,24 @@
-import auth from '../../../../lib/auth_helpers.js'
-import { signIn } from '../../../../lib/api_auth.js'
+import auth from '../../../lib/auth_helpers.js'
+import { signIn } from '../../../lib/api_auth.js'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'; 
-import '../../../styles/Form.css'
+import '../../styles/Form.css'
+
+const INITIAL_STATE = {
+    email: '', 
+    password: ''
+}
 
 export default function SignInForm() {
-    const [formData, setFormData] = useState({
-        email: '', 
-        password: ''
-    })
-
+    const [formData, setFormData] = useState(INITIAL_STATE)
     const navigate = useNavigate()
 
     const submission = async (e) => {
         e.preventDefault(); 
-
         await signIn(formData)
             
         if (auth.isAuthenticated()) {
-            setFormData({
-                email: '', 
-                password: ''
-            })
-
+            setFormData(INITIAL_STATE)
             window.alert('Successfully signed in.')
             navigate('/')
         }
