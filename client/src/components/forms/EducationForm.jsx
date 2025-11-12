@@ -90,7 +90,7 @@ export default function EducationForm() {
                     onChange={(e) => setFormData({ ...formData, description : e.target.value})}
                     required
                 ></textarea><br />
-                <button id="submit">Add Education</button>
+                <button className="submit">Add Education</button>
             </form> 
         </>
     )

@@ -23,7 +23,7 @@ const hasAuthorization = (req, res, next) => {
  * Checks if the authenticated user is an administrator.
  * @returns True if the authenticated user is an administrator; otherwise, false.
  */
-const isAdmin = (req, res, next) => {
+const requireAdmin = (req, res, next) => {
     if (!req.auth || !req.auth.isAdmin) { 
         return res.status(403).json({ error: "User is not authorized as an administrator" });
     }
@@ -73,4 +73,4 @@ const signout = (req, res) => {
     return res.status(200).json({ message: "Signed out successfully!" })
 }
 
-export default { isAdmin, requireSignin, signin, signout, hasAuthorization }
+export default { requireAdmin, requireSignin, signin, signout, hasAuthorization }

@@ -2,9 +2,6 @@ import contactModel from '../db/models/contact_model.js';
 import errorHandler from './error_controller.js'; 
 import extend from 'lodash/extend.js'; 
 
-const emailRegex = /^[a-zA-Z0-9%.+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const phoneRegex = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
-
 const contactByID = async (req, res, next, id) => {
     try {
         let contact = await contactModel.findById(id); 
@@ -24,7 +21,6 @@ const create = async (req, res) => {
     const contact = new contactModel(req.body);   
 
     try {
-        validate(contact);
         await contact.save();
         return res.status(201).json({message: "Successfully contacted administrators!"}); 
     } 
@@ -97,16 +93,6 @@ const update = async (req, res) => {
     catch (err) {
         return res.status(400).json({error: errorHandler(err)});
     }
-}
-
-function validate(contact) {
-    if (emailRegex && !emailRegex.test(contact.email)) {
-        throw new Error(`Invalid email format for "${contact.email}".`); 
-    }
-
-    else if (phoneRegex && !phoneRegex.test(contact.phone)) {
-        throw new Error(`Invalid phone number format for "${contact.phone}".`);
-    } 
 }
 
 export default { contactByID, create, list, read, remove, removeMany, update }

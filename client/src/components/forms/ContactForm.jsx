@@ -71,7 +71,7 @@ export default function ContactForm() {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message : e.target.value})}
             ></textarea> 
-            <button id="submit">Submit</button>
+            <button className="submit">Submit</button>
         </form>     
     )
 }

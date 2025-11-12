@@ -36,11 +36,11 @@ form button {
     padding: 0.75em 1.75em;  
 }
 
-form #submit { 
+form .submit { 
     background-color: limegreen; 
 }
 
-form #submit:hover { 
+form .submit:hover { 
     background-color: green; 
     cursor: pointer; 
 }

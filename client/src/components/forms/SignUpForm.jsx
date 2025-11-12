@@ -70,7 +70,7 @@ export default function ContactForm() {
                 onChange={(e) => setFormData({ ...formData, password : e.target.value})}
                 required
             /><br />
-            <button id="submit">Submit</button>
+            <button className="submit">Submit</button>
         </form> 
     )
 }

@@ -91,7 +91,7 @@ export default function CreateProjectForm() {
                     required
                 />
                 <br />
-                <button id="submit">Add Project Entry</button>
+                <button className="submit">Add Project Entry</button>
             </form> 
         </>
     )

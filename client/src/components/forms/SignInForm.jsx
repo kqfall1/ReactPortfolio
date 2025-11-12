@@ -60,7 +60,7 @@ export default function SignInForm() {
                 })}
                 required
             /><br />
-            <button id="submit">Submit</button>
+            <button className="submit">Submit</button>
         </form>
     )
 }
