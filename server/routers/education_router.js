@@ -9,9 +9,9 @@ router.route('/')
     .post(authCtrl.requireSignIn, authCtrl.requireAdmin, educationCtrl.create)
     .delete(authCtrl.requireSignIn, authCtrl.requireAdmin, educationCtrl.removeMany);
 router.route('/:educationId')
-    .get(authCtrl.requireSignIn, authCtrl.requireAuthorization, educationCtrl.read)
-    .put(authCtrl.requireSignIn, authCtrl.requireAuthorization, educationCtrl.update)
-    .delete(authCtrl.requireSignIn, authCtrl.requireAuthorization, educationCtrl.remove);
+    .get(authCtrl.requireSignIn, authCtrl.requireAdmin, educationCtrl.read)
+    .put(authCtrl.requireSignIn, authCtrl.requireAdmin, educationCtrl.update)
+    .delete(authCtrl.requireSignIn, authCtrl.requireAdmin, educationCtrl.remove);
 router.param('educationId', educationCtrl.educationByID);
 
 export default router; 

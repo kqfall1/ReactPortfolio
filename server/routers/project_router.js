@@ -10,9 +10,9 @@ router.route('/')
     .post(authCtrl.requireSignIn, authCtrl.requireAdmin, projectCtrl.create)
     .delete(authCtrl.requireSignIn, authCtrl.requireAdmin, projectCtrl.removeMany);
 router.route('/:projectId')
-    .get(authCtrl.requireSignIn, authCtrl.requireAuthorization, projectCtrl.read)
-    .put(authCtrl.requireSignIn, authCtrl.requireAuthorization, projectCtrl.update)
-    .delete(authCtrl.requireSignIn, authCtrl.requireAuthorization, projectCtrl.remove);
+    .get(authCtrl.requireSignIn, authCtrl.requireAdmin, projectCtrl.read)
+    .put(authCtrl.requireSignIn, authCtrl.requireAdmin, projectCtrl.update)
+    .delete(authCtrl.requireSignIn, authCtrl.requireAdmin, projectCtrl.remove);
 router.param('projectId', projectCtrl.projectByID);
 
 export default router;

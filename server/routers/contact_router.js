@@ -9,9 +9,9 @@ router.route('/')
     .post(contactCtrl.create) 
     .delete(authCtrl.requireSignIn, authCtrl.requireAdmin, contactCtrl.removeMany);
 router.route('/:contactId')
-    .get(authCtrl.requireSignIn, authCtrl.requireAuthorization, contactCtrl.read)
-    .put(authCtrl.requireSignIn, authCtrl.requireAuthorization, contactCtrl.update)
-    .delete(authCtrl.requireSignIn, authCtrl.requireAuthorization, contactCtrl.remove);
+    .get(authCtrl.requireSignIn, authCtrl.requireAdmin, contactCtrl.read)
+    .put(authCtrl.requireSignIn, authCtrl.requireAdmin, contactCtrl.update)
+    .delete(authCtrl.requireSignIn, authCtrl.requireAdmin, contactCtrl.remove);
 router.param('contactId', contactCtrl.contactByID);
 
 export default router; 

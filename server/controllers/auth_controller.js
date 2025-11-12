@@ -25,7 +25,9 @@ const requireAdmin = (req, res, next) => {
 }
 
 /**
- * Checks if the authenticated user is an administrator or the owner of the database entry.
+ * Checks if the authenticated user is an administrator or the owner of the user entry in
+ * the database. This method should only be invoked for users and userController.userById
+ * should be mounted first by the router method that invokes this method.
  * @returns True if the authenticated user is the owner of the database entry or an 
  * administrator; otherwise, returns false.
  */
