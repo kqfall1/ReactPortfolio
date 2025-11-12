@@ -2,6 +2,10 @@ import contactModel from '../db/models/contact_model.js';
 import errorHandler from './error_controller.js'; 
 import extend from 'lodash/extend.js'; 
 
+/**
+ * Finds a contact by its ID and attaches it to the request profile.
+ * @returns A 400 error response if the contact is not found. 
+ */
 const contactByID = async (req, res, next, id) => {
     try {
         let contact = await contactModel.findById(id); 

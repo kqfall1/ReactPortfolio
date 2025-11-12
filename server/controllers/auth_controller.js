@@ -4,34 +4,42 @@ import jwt from 'jsonwebtoken';
 import userModel from '../db/models/user_model.js'; 
 
 /**
- * Checks if the authenticated user is authorized to access or modify a database 
- * entry. 
- * @returns True if the authenticated user is the owner of the database entry or an 
- * administrator; otherwise, returns false.
+ * Determines if the current user is currently signed in as an administrator.
+ * @returns True if the user is signed in as an administrator; otherwise, false.
  */
-const hasAuthorization = (req, res, next) => {
-    const isOwner = req.profile && req.profile._id.toString() === req.auth._id;
+const isAdmin = (req) => {
+    return req.auth && req.auth.isAdmin;
+}
 
-    if (!isOwner && (!req.auth || !req.auth.isAdmin)) {
-        return res.status(403).json({ error: "User is not authorized" });
+/**
+ * Checks if the authenticated user is an administrator.
+ * @returns A 200 OK response if the user is an administrator and a 
+ * 403 error response otherwise. 
+ */
+const requireAdmin = (req, res, next) => {
+    if (!isAdmin(req)) { 
+        return res.status(403).json({ error: "User is not authenticated as an administrator" });
     }
 
     next(); 
 }
 
 /**
- * Checks if the authenticated user is an administrator.
- * @returns True if the authenticated user is an administrator; otherwise, false.
+ * Checks if the authenticated user is an administrator or the owner of the database entry.
+ * @returns True if the authenticated user is the owner of the database entry or an 
+ * administrator; otherwise, returns false.
  */
-const requireAdmin = (req, res, next) => {
-    if (!req.auth || !req.auth.isAdmin) { 
-        return res.status(403).json({ error: "User is not authorized as an administrator" });
+const requireAuthorization = (req, res, next) => {
+    const isOwner = req.profile && req.profile._id.toString() === req.auth._id;
+    
+    if (!isOwner && !isAdmin(req)) { 
+        return res.status(403).json({ error: "User is not authorized" });
     }
 
     next(); 
 }
 
-const requireSignin = expressjwt({
+const requireSignIn = expressjwt({
     secret: config.jwtSecret,
     algorithms: ['HS256'],
     userProperty: 'auth'
@@ -73,4 +81,5 @@ const signout = (req, res) => {
     return res.status(200).json({ message: "Signed out successfully!" })
 }
 
-export default { requireAdmin, requireSignin, signin, signout, hasAuthorization }
+export default { requireAdmin, requireAuthorization, requireSignIn, signin, 
+               signout }

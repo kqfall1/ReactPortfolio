@@ -5,13 +5,13 @@ import express from 'express';
 const router = express.Router();
 
 router.route('/')
-    .get(contactCtrl.list)
-    .post(authCtrl.requireSignin, contactCtrl.create) 
-    .delete(authCtrl.requireSignin, authCtrl.requireAdmin, contactCtrl.removeMany);
+    .get(authCtrl.requireSignIn, authCtrl.requireAdmin, contactCtrl.list)
+    .post(contactCtrl.create) 
+    .delete(authCtrl.requireSignIn, authCtrl.requireAdmin, contactCtrl.removeMany);
 router.route('/:contactId')
-    .get(authCtrl.requireSignin, authCtrl.requireAdmin, contactCtrl.read)
-    .put(authCtrl.requireSignin, authCtrl.requireAdmin, contactCtrl.update)
-    .delete(authCtrl.requireSignin, authCtrl.requireAdmin, contactCtrl.remove);
+    .get(authCtrl.requireSignIn, authCtrl.requireAuthorization, contactCtrl.read)
+    .put(authCtrl.requireSignIn, authCtrl.requireAuthorization, contactCtrl.update)
+    .delete(authCtrl.requireSignIn, authCtrl.requireAuthorization, contactCtrl.remove);
 router.param('contactId', contactCtrl.contactByID);
 
 export default router; 

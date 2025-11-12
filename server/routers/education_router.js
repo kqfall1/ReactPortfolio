@@ -5,13 +5,13 @@ import express from 'express';
 const router = express.Router();
 
 router.route('/')
-    .get(educationCtrl.list)
-    .post(authCtrl.requireSignin, authCtrl.isAdmin, educationCtrl.create)
-    .delete(authCtrl.requireSignin, authCtrl.isAdmin, educationCtrl.removeMany);
+    .get(authCtrl.requireSignIn, authCtrl.requireAdmin, educationCtrl.list)
+    .post(authCtrl.requireSignIn, authCtrl.requireAdmin, educationCtrl.create)
+    .delete(authCtrl.requireSignIn, authCtrl.requireAdmin, educationCtrl.removeMany);
 router.route('/:educationId')
-    .get(educationCtrl.read)
-    .put(authCtrl.requireSignin, authCtrl.isAdmin, educationCtrl.update)
-    .delete(authCtrl.requireSignin, authCtrl.isAdmin, educationCtrl.remove);
+    .get(authCtrl.requireSignIn, authCtrl.requireAuthorization, educationCtrl.read)
+    .put(authCtrl.requireSignIn, authCtrl.requireAuthorization, educationCtrl.update)
+    .delete(authCtrl.requireSignIn, authCtrl.requireAuthorization, educationCtrl.remove);
 router.param('educationId', educationCtrl.educationByID);
 
 export default router; 

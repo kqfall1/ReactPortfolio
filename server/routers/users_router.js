@@ -5,13 +5,13 @@ import userCtrl from '../controllers/user_controller.js';
 const router = express.Router(); 
 
 router.route('/')
-    .get(authCtrl.requireSignin, authCtrl.isAdmin, userCtrl.list)
+    .get(authCtrl.requireSignIn, authCtrl.requireAdmin, userCtrl.list)
     .post(userCtrl.create)
-    .delete(authCtrl.requireSignin, authCtrl.isAdmin, userCtrl.removeMany);
+    .delete(authCtrl.requireSignIn, authCtrl.requireAdmin, userCtrl.removeMany);
 router.route('/:userId')
-    .get(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.read)
-    .put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.update)
-    .delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.remove)
+    .get(authCtrl.requireSignIn, authCtrl.requireAuthorization, userCtrl.read)
+    .put(authCtrl.requireSignIn, authCtrl.requireAuthorization, userCtrl.update)
+    .delete(authCtrl.requireSignIn, authCtrl.requireAuthorization, userCtrl.remove)
 router.param('userId', userCtrl.userByID); 
 
 export default router; 
