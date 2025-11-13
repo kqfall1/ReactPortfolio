@@ -37,7 +37,7 @@ const create = async (req, res) => {
 const list = async (req, res) => {
     try {
         let users = await userModel.find().select(
-            'createdAt email firstname lastname updatedAt username'
+            'createdAt email firstname isAdmin lastname updatedAt username'
         );
 
         res.json(users); 

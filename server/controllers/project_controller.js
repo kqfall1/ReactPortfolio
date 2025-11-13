@@ -17,7 +17,7 @@ const create = async (req, res) => {
 const list = async (req, res) => {
     try {
         let projects = await projectModel.find().select(
-            'completed createdAt description title updatedAt'
+            'createdAt description end photoPath projectLink start title updatedAt'
         );
 
         res.json(projects);

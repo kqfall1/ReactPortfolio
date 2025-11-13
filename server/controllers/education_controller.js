@@ -32,7 +32,7 @@ const educationByID = async (req, res, next, id) => {
 const list = async (req, res) => {
     try {
         let educations = await educationModel.find().select(
-            'completed createdAt description title updatedAt'
+            'createdAt description end location photoPath start title updatedAt'
         );
 
         res.status(200).json(educations);
