@@ -26,7 +26,7 @@ const create = async (apiRoute, credentials, obj) => {
             body: JSON.stringify(obj)
         })
 
-        console.log(res)
+        //console.log(res)
         return await handleResponse(res)
     }
     catch (err) {

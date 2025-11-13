@@ -44,7 +44,7 @@ const signOut = async () => {
         try {
             const res = await fetch(`/api/auth/signout`, {method: 'GET'}) 
 
-            console.log(res)
+            //console.log(res)
             const data = await handleResponse(res)
 
             if (res.ok) {
@@ -52,7 +52,7 @@ const signOut = async () => {
                 window.alert("Successfully signed out.")
             }
 
-            console.log(data)
+            //console.log(data)
             return data
         } 
         catch (err) {

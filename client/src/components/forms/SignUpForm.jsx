@@ -103,8 +103,8 @@ const validatePassword = (password) => {
     const HAS_SPECIAL_CHAR = /[!@#$%^&*(),.?":{}|<>]/.test(password);  
 
     return password.length >= MIN_LENGTH 
-        && HAS_UPPERCASE 
+        /* && HAS_UPPERCASE 
         && HAS_LOWERCASE 
         && HAS_NUMBER 
-        && HAS_SPECIAL_CHAR;
+        && HAS_SPECIAL_CHAR;*/
 } 
