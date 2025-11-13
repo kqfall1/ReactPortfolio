@@ -87,7 +87,8 @@ export default function CreateProjectForm() {
                 <label htmlFor="projectDescriptionInput">Description:</label>
                 <textarea
                     id="projectDescriptionInput"
-                    placeholder="A web application that allows users to track their health metrics over time."
+                    placeholder="A web application that allows users 
+                    to track their health metrics over time."
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description : e.target.value})}
                     required

@@ -57,7 +57,7 @@ const list = async (apiRoute, signal) => {
 
 /**
  * Retrieves a specific resource by its ID from the specified API route by sending a GET request.
- * @param {*} apiRoute The route to the API. 
+ * @param {*} apiRoute The route to the API. Must include a trailing slash.
  * @param {*} credentials An object with authentication credential fields.
  * @param {*} id The ID of the resource to retrieve.
  * @param {*} signal An AbortSignal to cancel the request if needed.
@@ -85,7 +85,7 @@ const read = async (apiRoute, credentials, id, signal) => {
 
 /**
  * Deletes a specific resource by its ID from the specified API route by sending a DELETE request.
- * @param {*} apiRoute The route to the API. 
+ * @param {*} apiRoute The route to the API. Must include a trailing slash.
  * @param {*} credentials An object with authentication credential fields.
  * @param {*} id The ID of the resource to delete.
  * @returns A JSON object representing the deleted resource.
