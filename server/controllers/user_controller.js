@@ -5,8 +5,6 @@ import userModel from '../db/models/user_model.js';
 /**
  * Creates a new user. If the "isAdmin" field is set to true in the request body,
  * the requester must be an administrator for an administrative user to be created.
- * @throws Error if the requester is not an administrator but attempts to create
- * an administrative user.
  */
 const create = async (req, res) => {
     const {  email, firstname, isAdmin, lastname, password, username } = req.body;
@@ -68,7 +66,7 @@ const remove = async (req, res) => {
 /**
  * Removes all non-administrator users only if no IDs are specified in the "ids" field of 
  * the request body. If IDs are specified, only specified, non-administrator users are removed.
- * @param {Request} req A request that should either contain a "confirm" field set to "true"
+ * @param {*} req A request that should either contain a "confirm" field set to "true"
  * or an "ids" field containing an array of non-administrator user IDs for deletion.
  */
 const removeMany = async (req, res) => {

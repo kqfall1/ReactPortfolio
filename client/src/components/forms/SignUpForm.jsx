@@ -95,6 +95,11 @@ const INITIAL_STATE = {
     username: ''
 }
 
+/**
+ * Determines if a password is valid based on defined security criteria.
+ * @param {*} password The password string to validate.
+ * @returns True if the password meets all criteria, false otherwise.
+ */
 const validatePassword = (password) => {
     const MIN_LENGTH = 8;
     const HAS_UPPERCASE = /[A-Z]/.test(password);
@@ -103,8 +108,8 @@ const validatePassword = (password) => {
     const HAS_SPECIAL_CHAR = /[!@#$%^&*(),.?":{}|<>]/.test(password);  
 
     return password.length >= MIN_LENGTH 
-        /* && HAS_UPPERCASE 
+        && HAS_UPPERCASE 
         && HAS_LOWERCASE 
         && HAS_NUMBER 
-        && HAS_SPECIAL_CHAR;*/
+        && HAS_SPECIAL_CHAR;
 } 

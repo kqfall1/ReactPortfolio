@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import userModel from '../db/models/user_model.js'; 
 
 /**
- * Determines if the current user is currently signed in as an administrator.
+ * Determines if the current user is currently authenticated as an administrator.
  * @returns True if the user is signed in as an administrator; otherwise, false.
  */
 const isAdmin = (req) => {
@@ -13,8 +13,8 @@ const isAdmin = (req) => {
 
 /**
  * Checks if the authenticated user is an administrator.
- * @returns A 200 OK response if the user is an administrator and a 
- * 403 error response otherwise. 
+ * @returns A 200 OK response if the user is an administrator and a 403 error response 
+ * otherwise. 
  */
 const requireAdmin = (req, res, next) => {
     if (!isAdmin(req)) { 
@@ -25,9 +25,9 @@ const requireAdmin = (req, res, next) => {
 }
 
 /**
- * Checks if the authenticated user is an administrator or the owner of the user entry in
+ * Checks if the authenticated user is an administrator or the owner of a user entry in
  * the database. This method should only be invoked for users and userController.userById
- * should be mounted first by the router method that invokes this method.
+ * should be mounted before this one by the appropriate router method to populate req.profile. 
  * @returns True if the authenticated user is the owner of the database entry or an 
  * administrator; otherwise, returns false.
  */
@@ -47,6 +47,14 @@ const requireSignIn = expressjwt({
     userProperty: 'auth'
 }); 
 
+/**
+ * Determines if the user can be signed in with the provided credentials. If so, a JWT
+ * is created and stored in the client browser's local storage. 
+ * @param {*} req The Request object. 
+ * @param {*} res The Response object.
+ * @returns A JSON object containing the JWT and user details if the user can be signed in;
+ * otherwise, an error message.
+ */
 const signin = async (req, res) => {
     try {
         const user = await userModel.findOne({ "email": req.body.email })
@@ -78,6 +86,10 @@ const signin = async (req, res) => {
     }
 }
 
+/**
+ * Removes the JWT from the client browser's local storage, effectively signing the user out.
+ * @returns A successful response message.
+ */
 const signout = (req, res) => {
     res.clearCookie('t')
     return res.status(200).json({ message: "Signed out successfully!" })

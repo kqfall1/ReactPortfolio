@@ -4,8 +4,8 @@ import { handleError, handleResponse } from './helpers.js';
 /**
  * Signs a user into their account if the credentials they enter are correct.
  * @param {*} credentials An object with the fields needed to sign in. 
- * @returns An object representing the user signed in alongside a JWT token for 
- * the current session. 
+ * @returns An object representing the authenticated user alongside a JWT token for 
+ * the user's current session. 
  * @throws An error if the credentials are invalid. 
  */
 const signIn = async (credentials) => {
@@ -22,7 +22,7 @@ const signIn = async (credentials) => {
         //console.log(res)
         const data = await handleResponse(res);
 
-        if (res.ok && data.token && typeof data.token === 'string') {
+        if (res.ok && typeof data?.token === 'string') {
             auth.authenticate(data.token)
         }
 
@@ -37,7 +37,7 @@ const signIn = async (credentials) => {
 /**
  * Signs a user out of their account. 
  * @returns A string indicating success or failure. 
- * @throws An error if sign out was unsuccessful.
+ * @throws An error if the sign out process was unsuccessful.
  */
 const signOut = async () => {
     if (auth.isAuthenticated()) {

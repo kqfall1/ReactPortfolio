@@ -4,7 +4,7 @@ import extend from 'lodash/extend.js';
 
 /**
  * Finds a contact by its ID and attaches it to the request profile.
- * @returns A 400 error response if the contact is not found. 
+ * @returns A 400 error response if there is an error during retrieval.
  */
 const contactByID = async (req, res, next, id) => {
     try {
@@ -63,7 +63,7 @@ const remove = async (req, res) => {
 /**
  * Removes all contacts if no IDs are specified in the "ids" field of the request body. 
  * If IDs are specified, only those contacts are removed.
- * @param {Request} req A request that should either contain a "confirm" field set to "true"
+ * @param {*} req A request that should either contain a "confirm" field set to "true"
  * or an "ids" field containing an array of contact IDs deletion.
  */
 const removeMany = async (req, res) => {

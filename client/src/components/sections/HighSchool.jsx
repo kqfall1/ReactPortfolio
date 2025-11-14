@@ -1,6 +1,5 @@
-import '../../styles/HighSchool.css';
-
 import RH_KingAcademy from '../../assets/RH_KingAcademy.jpg';
+import '../../styles/HighSchool.css';
 
 export default function HighSchool() {
     return ( 

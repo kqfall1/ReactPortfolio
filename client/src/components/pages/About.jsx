@@ -1,9 +1,8 @@
-import '../../styles/About.css';
-
 import Footer from '../sections/Footer.jsx'; 
 import Headshot from '../../assets/Headshot.jpg';
 import Interests from '../sections/Interests.jsx'; 
 import Resume from '../../assets/QuinnKeenanResume.pdf';
+import '../../styles/About.css';
 
 export default function About () {
     return (

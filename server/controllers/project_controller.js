@@ -27,6 +27,10 @@ const list = async (req, res) => {
     }
 }
 
+/**
+ * Finds a project by its ID and attaches it to the request profile.
+ * @returns A 400 error response if there is an error during retrieval.
+ */
 const projectByID = async (req, res, next, id) => {
     try {
         let project = await projectModel.findById(id); 
@@ -59,7 +63,7 @@ const remove = async (req, res) => {
 /**
  * Removes all projects if no IDs are specified in the "ids" field of the request body. 
  * If IDs are specified, only those projects are removed.
- * @param {Request} req A request that should either contain a "confirm" field set to "true"
+ * @param {*} req A request that should either contain a "confirm" field set to "true"
  * or an "ids" field containing an array of project IDs for deletion.
  */
 const removeMany = async (req, res) => {

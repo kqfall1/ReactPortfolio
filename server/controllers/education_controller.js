@@ -14,6 +14,10 @@ const create = async (req, res) => {
     } 
 }
 
+/**
+ * Finds an education by its ID and attaches it to the request profile.
+ * @returns A 400 error response if there is an error during retrieval.
+ */
 const educationByID = async (req, res, next, id) => {
     try {
         const education = await educationModel.findById(id); 
@@ -59,7 +63,7 @@ const remove = async (req, res) => {
 /**
  * Removes all educations if no IDs are specified in the "ids" field of the request body. 
  * If IDs are specified, only those educations are removed.
- * @param {Request} req A request that should either contain a "confirm" field set to "true"
+ * @param {*} req A request that should either contain a "confirm" field set to "true"
  * or an "ids" field containing an array of education IDs for deletion.
  */
 const removeMany = async (req, res) => {

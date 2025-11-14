@@ -1,5 +1,5 @@
-import '../../styles/HealthHome.css'; 
 import HealthHomeLandingPage from '../../assets/HealthHomeLandingPage.jpeg'; 
+import '../../styles/HealthHome.css'; 
 
 export default function HealthHome() { 
     return ( 

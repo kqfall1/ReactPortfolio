@@ -1,5 +1,5 @@
-import '../../styles/PetFramework.css'; 
-import PetFrameworkUseCase from '../../assets/PetFrameworkUseCase.JPG'; 
+ import PetFrameworkUseCase from '../../assets/PetFrameworkUseCase.JPG'; 
+ import '../../styles/PetFramework.css';
 
 export default function PetFramework() { 
     return ( 

@@ -2,7 +2,7 @@ import { handleResponse, handleError } from './helpers.js';
 
 /**
  * Creates a new resource by sending a POST request to the specified API route.
- * @param {*} apiRoute The route to the API. 
+ * @param {*} apiRoute The route to the API. Must include a trailing slash. 
  * @param {*} credentials An object with authentication credential fields. Pass null 
  * if no authentication is needed.
  * @param {*} obj An object with the fields needed to create the resource.
@@ -10,14 +10,7 @@ import { handleResponse, handleError } from './helpers.js';
  * @throws An error if the request fails or the response cannot be parsed as JSON.
  */
 const create = async (apiRoute, credentials, obj) => {
-    const headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    }
-    
-    if (credentials && credentials.t) {
-        headers['Authorization'] = `Bearer ${credentials.t}`
-    }
+    const headers = determineHeaders(credentials)
     
     try {
         const res = await fetch(apiRoute, {
@@ -34,9 +27,22 @@ const create = async (apiRoute, credentials, obj) => {
     } 
 }
 
+const determineHeaders = (credentials) => {
+    const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+
+    if (credentials?.t) {
+        headers['Authorization'] = `Bearer ${credentials.t}`
+    }
+
+    return headers
+}
+
 /**
  * Retrieves a list of resources from the specified API route by sending a GET request.
- * @param {*} apiRoute The route to the API. 
+ * @param {*} apiRoute The route to the API. Must include a trailing slash.
  * @param {*} signal An AbortSignal to cancel the request if needed.
  * @returns A list of resources in JSON format.
  * @throws An error if the request fails.
@@ -65,15 +71,13 @@ const list = async (apiRoute, signal) => {
  * @throws An error if the request fails.
  */
 const read = async (apiRoute, credentials, id, signal) => {
+    const headers = determineHeaders(credentials)
+    
     try {
         const res = await fetch(`${apiRoute}${id}`, {
             method: 'GET',
             signal: signal,
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${credentials.t}`
-            } 
+            headers: headers
         })
 
         return await handleResponse(res);
@@ -92,14 +96,12 @@ const read = async (apiRoute, credentials, id, signal) => {
  * @throws An error if the request fails.
  */
 const remove = async (apiRoute, credentials, id) => {
+    const headers = determineHeaders(credentials)
+    
     try {
         const res = await fetch(`${apiRoute}${id}`, {
             method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json', 
-                'Authorization': `Bearer ${credentials.t}`
-            }
+            headers: headers
         }) 
 
         return await handleResponse(res)
@@ -118,14 +120,12 @@ const remove = async (apiRoute, credentials, id) => {
  * @throws An error if the request fails.
  */
 const update = async (apiRoute, credentials, id, obj) => {
+    const headers = determineHeaders(credentials)
+    
     try {
         const res = await fetch(`${apiRoute}${id}`, {
             method: 'PUT',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json', 
-                'Authorization': `Bearer ${credentials.t}`
-            }, 
+            headers: headers, 
             body: JSON.stringify(obj)
         })
 
